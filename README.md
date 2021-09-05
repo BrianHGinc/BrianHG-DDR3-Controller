@@ -1,7 +1,7 @@
 # BrianHG-DDR3-Controller
 A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable width, priority, auto-burst size & smart cache. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove function. 
 
-Fully functional hardware tested on Arrows DECA developement board with a 512mb DDR3 ram chip generating a 1080p video output with an ellipse generator geometry graphics engine.
+Fully functional hardware tested on Arrows DECA developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color video output with an ellipse generator geometry graphics engine.
 
 Fully documented source code.
 
@@ -18,6 +18,7 @@ Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyc
 
  - DECA projects eval board here: https://www.arrow.com/en/products/deca/arrow-development-tools
  - EEVBlog DECA guide here: https://www.eevblog.com/forum/fpga/arrow-deca-max-10-board-for-$37/
+ - EEVBlog DECA 1080p out demo .sof file here: https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg3630084/#msg3630084
 
 *************************************************************
 *** Release V1.00, August 27, 2021 **************************
