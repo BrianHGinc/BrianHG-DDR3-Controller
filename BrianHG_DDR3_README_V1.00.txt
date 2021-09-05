@@ -1,4 +1,3 @@
-
 BrianHG_DDR3_README_V1.00.txt Status/Revision Log, Instructions.
 August 27, 2021.
 
@@ -6,10 +5,20 @@ Written by Brian Guralnick.
 For public use.
 Leave questions in the https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
 
-Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyclone III & IV, may require overclocking.)
+A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable width, priority, auto-burst size & smart cache. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove error free comand functionality. 
+
+Fully functional hardware tested on Arrow's DECA 37$ MAX10 developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color HDMI video output with a random 3D ellipse geometry drawing graphics engine.
+
+True 400MHz support for Altera/Intel Cyclone/Max speed grade -6, 300MHz for -8. -8 can be overclockded to 400MHz. (-6 can run at 500MHz/1GTPS is unofficial but functional on Arrow's DECA board using 1x 16bit DDR3 ram chip)
+
+ - DECA projects eval board here: https://www.arrow.com/en/products/deca/arrow-development-tools
+ - EEVBlog DECA guide here: https://www.eevblog.com/forum/fpga/arrow-deca-max-10-board-for-$37/
+ - EEVBlog DECA 1080p out demo .sof file here: https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg3630084/#msg3630084
+
+
+Designed for Altera/Intel Quartus Cyclone III/IV/V/10/MAX10 and others.
              Lattice ECP5/LFE5U series.  (Coming soon)
              Xilinx Artix 7 series.      (Coming soon)
-
 
 
 *************************************************************
