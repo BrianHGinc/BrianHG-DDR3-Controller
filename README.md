@@ -1,7 +1,7 @@
 # BrianHG-DDR3-Controller
-SystemVerilog DDR3 Memory Controller.
+A SystemVerilog DDR3 Memory Controller with up to 16 read and 16 write ports with configurable width priority encoding.
 
-Up to 16 read and 16 write ports with configurable width priority encoding.
+Fully documented source code.
 
 BrianHG_DDR3_README_V1.00.txt Status/Revision Log, Instructions.
 August 27, 2021.
