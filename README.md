@@ -20,31 +20,33 @@ Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyc
 *** Tested on Quartus Prime 20.1   **************************
 *************************************************************
 
+------------------------------------------
 Featured full Quartus Prime 20.1 projects:  (Except for 'BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1')
-
 ------------------------------------------
 
--BrianHG_DDR3_DECA_GFX_DEMO                 400MHz, functional DDR3 System scrolling ellipse with optional RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_Show_1080p               400MHz, functional DDR3 System 1080p 32bit display with optional RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_RS232_DEBUG_TEST         400MHz, functional DDR3 System RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_only_PHY_SEQ             400MHz, functional DDR3 PHY Only controller with RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_CIV_GFX_FMAX_Test             400MHz, Hypothetical Cyclone IV DDR3 System scrolling ellipse build to verify FMAX.
--BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1   400MHz, Hypothetical Cyclone III DDR3 System scrolling ellipse build to verify FMAX.  (Uses Quartus 13.0sp1)
--BrianHG_DDR3_CV_GFX_FMAX_Fail              400MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (FMAX FAILED)
--BrianHG_DDR3_CV_GFX_FMAX_Test              300MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (PASSED, but with features disabled)
--BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no multiport)
+ - BrianHG_DDR3_DECA_GFX_DEMO                 400MHz, functional DDR3 System scrolling ellipse with optional RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_Show_1080p               400MHz, functional DDR3 System 1080p 32bit display with optional RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_RS232_DEBUG_TEST         400MHz, functional DDR3 System RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_only_PHY_SEQ             400MHz, functional DDR3 PHY Only controller with RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_CIV_GFX_FMAX_Test             400MHz, Hypothetical Cyclone IV DDR3 System scrolling ellipse build to verify FMAX.
+ - BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1   400MHz, Hypothetical Cyclone III DDR3 System scrolling ellipse build to verify FMAX.  (Uses Quartus 13.0sp1)
+ - BrianHG_DDR3_CV_GFX_FMAX_Fail              400MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (FMAX FAILED)
+ - BrianHG_DDR3_CV_GFX_FMAX_Test              300MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (PASSED, but with features disabled)
+ - BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no multiport)
 
 
+------------------------------------------
 Source Folders:
----------------
--BrianHG_DDR3                               Source code for BrianHG_DDR3 controller.
--BrianHG_DDR3_GFX_source                    Source code for rendering random ellipses with a scrolling screen.
+------------------------------------------
+ - BrianHG_DDR3                               Source code for BrianHG_DDR3 controller.
+ - BrianHG_DDR3_GFX_source                    Source code for rendering random ellipses with a scrolling screen.
 
 
+------------------------------------------
 Screenshots folder:
--------------------
--LC-LUT_screenshots/                        Contains tables of the compiled LC&LUT usage for various clock frequency and feature builds.
--FMAX_screenshots/                          Contains FMAX timing analyzer results screenshots of various FPGA builds.
+------------------------------------------
+ - LC-LUT_screenshots/                        Contains tables of the compiled LC&LUT usage for various clock frequency and feature builds.
+ - FMAX_screenshots/                          Contains FMAX timing analyzer results screenshots of various FPGA builds.
 
 
 Check here for compiled FMAX & LC/LUT usage stats:
@@ -232,28 +234,28 @@ Example Quartus Prime Projects, Clocks and timing specs.
 
 Folders:
 
--BrianHG_DDR3                               -> Only contains all the .v & .sv source code which the next project folders read from.
--BrianHG_DDR3_DECA_GFX_DEMO                 400MHz, functional DDR3 System scrolling ellipse with optional RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_Show_1080p               400MHz, functional DDR3 System 1080p 32bit display with optional RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_RS232_DEBUG_TEST         400MHz, functional DDR3 System RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_DECA_only_PHY_SEQ             400MHz, functional DDR3 PHY Only controller with RS232 debug port demo for Arrow DECA eval board.
--BrianHG_DDR3_CIV_GFX_FMAX_Test             400MHz, Hypothetical Cyclone IV DDR3 System scrolling ellipse build to verify FMAX.
--BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1   400MHz, Hypothetical Cyclone III DDR3 System scrolling ellipse build to verify FMAX.  (Uses Quartus 13.0sp1)
--BrianHG_DDR3_CV_GFX_FMAX_Fail              400MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (FMAX FAILED)
--BrianHG_DDR3_CV_GFX_FMAX_Test              300MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (PASSED, but with features disabled)
--BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no multiport)
--BrianHG_DDR3_GFX_source                    -> Only contains source code for rendering the random ellipses demo.
+ - BrianHG_DDR3                               -> Only contains all the .v & .sv source code which the next project folders read from.
+ - BrianHG_DDR3_DECA_GFX_DEMO                 400MHz, functional DDR3 System scrolling ellipse with optional RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_Show_1080p               400MHz, functional DDR3 System 1080p 32bit display with optional RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_RS232_DEBUG_TEST         400MHz, functional DDR3 System RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_DECA_only_PHY_SEQ             400MHz, functional DDR3 PHY Only controller with RS232 debug port demo for Arrow DECA eval board.
+ - BrianHG_DDR3_CIV_GFX_FMAX_Test             400MHz, Hypothetical Cyclone IV DDR3 System scrolling ellipse build to verify FMAX.
+ - BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1   400MHz, Hypothetical Cyclone III DDR3 System scrolling ellipse build to verify FMAX.  (Uses Quartus 13.0sp1)
+ - BrianHG_DDR3_CV_GFX_FMAX_Fail              400MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (FMAX FAILED)
+ - BrianHG_DDR3_CV_GFX_FMAX_Test              300MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (PASSED, but with features disabled)
+ - BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no  multiport)
+ - BrianHG_DDR3_GFX_source                    -> Only contains source code for rendering the random ellipses demo.
 
     For the pll clocks:
--        MAX10_CLK1_50     -> CLK_IN,      This is the source oscillator clock at 50MHz.
--        *DDR3_PLL5*clk[0] -> DDR_CLK,     DDR3 clock and runs at the 300-400MHz.
--        *DDR3_PLL5*clk[1] -> DDR_CLK_WDQ, DDR3 write data clock, set to 90 degrees out of phase compared to BHG_*|pll1[0].
--        *DDR3_PLL5*clk[2] -> DDR_CLK_RDQ, DDR3 read data clock, at power-up, this clock is automatically tuned to the best phase to capture the read data coming back from the DDR3 ram chips.
--        *DDR3_PLL5*clk[3] -> DDR_CLK_50,  This is the interface clock for the DDR3_PHY controller and it runs at 50% speed of the DDR_CLK clock.
--        *DDR3_PLL5*clk[3] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
+ -        MAX10_CLK1_50     -> CLK_IN,      This is the source oscillator clock at 50MHz.
+ -        *DDR3_PLL5*clk[0] -> DDR_CLK,     DDR3 clock and runs at the 300-400MHz.
+ -        *DDR3_PLL5*clk[1] -> DDR_CLK_WDQ, DDR3 write data clock, set to 90 degrees out of phase compared to BHG_*|pll1[0].
+ -        *DDR3_PLL5*clk[2] -> DDR_CLK_RDQ, DDR3 read data clock, at power-up, this clock is automatically tuned to the best phase to capture the read data coming back from the DDR3 ram chips.
+ -        *DDR3_PLL5*clk[3] -> DDR_CLK_50,  This is the interface clock for the DDR3_PHY controller and it runs at 50% speed of the DDR_CLK clock.
+ -        *DDR3_PLL5*clk[3] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
 
--         CMD_CLK                          This clock is tied to either DDR_CLK, DDR_CLK_50, or DDR_CLK_25 depending on parameter 'INTERFACE_SPEED' being Full, Half, or Quarter.
--                                          This clock drives the multiport COMMANDER module and sets it's interface clock speed.
+ -         CMD_CLK                          This clock is tied to either DDR_CLK, DDR_CLK_50, or DDR_CLK_25 depending on parameter 'INTERFACE_SPEED' being Full, Half, or Quarter.
+ -                                          This clock drives the multiport COMMANDER module and sets it's interface clock speed.
 
 
     Note that the set_input_delays in the 'BrianHG_DDR3_DECA.sdc' are mandatory, otherwise the DDR will not initialize or read data properly.
