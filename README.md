@@ -21,15 +21,25 @@ Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyc
 *************************************************************
 
 Featured full Quartus Prime 20.1 projects:  (Except for 'BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1')
+
 ------------------------------------------
+
 BrianHG_DDR3_DECA_GFX_DEMO                 400MHz, functional DDR3 System scrolling ellipse with optional RS232 debug port demo for Arrow DECA eval board.
+
 BrianHG_DDR3_DECA_Show_1080p               400MHz, functional DDR3 System 1080p 32bit display with optional RS232 debug port demo for Arrow DECA eval board.
+
 BrianHG_DDR3_DECA_RS232_DEBUG_TEST         400MHz, functional DDR3 System RS232 debug port demo for Arrow DECA eval board.
+
 BrianHG_DDR3_DECA_only_PHY_SEQ             400MHz, functional DDR3 PHY Only controller with RS232 debug port demo for Arrow DECA eval board.
+
 BrianHG_DDR3_CIV_GFX_FMAX_Test             400MHz, Hypothetical Cyclone IV DDR3 System scrolling ellipse build to verify FMAX.
+
 BrianHG_DDR3_CIII_GFX_FMAX_Test_Q13.0sp1   400MHz, Hypothetical Cyclone III DDR3 System scrolling ellipse build to verify FMAX.  (Uses Quartus 13.0sp1)
+
 BrianHG_DDR3_CV_GFX_FMAX_Fail              400MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (FMAX FAILED)
+
 BrianHG_DDR3_CV_GFX_FMAX_Test              300MHz, Hypothetical Cyclone V-6 DDR3 System scrolling ellipse build to verify FMAX.  (PASSED, but with features disabled)
+
 BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no multiport)
 
 
