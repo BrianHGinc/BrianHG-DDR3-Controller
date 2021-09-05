@@ -45,16 +45,22 @@ BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3
 
 Source Folders:
 ---------------
+
 BrianHG_DDR3                               Source code for BrianHG_DDR3 controller.
+
 BrianHG_DDR3_GFX_source                    Source code for rendering random ellipses with a scrolling screen.
 
 
 Screenshots folder:
+
 -------------------
 LC-LUT_screenshots/                        Contains tables of the compiled LC&LUT usage for various clock frequency and feature builds.
+
 FMAX_screenshots/                          Contains FMAX timing analyzer results screenshots of various FPGA builds.
 
+
 Check here for compiled FMAX & LC/LUT usage stats:
+
 https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg3649318/#msg3649318
 
 
