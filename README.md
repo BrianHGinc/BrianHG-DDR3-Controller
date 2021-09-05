@@ -253,7 +253,7 @@ Folders:
  -        *DDR3_PLL5*clk[1] -> DDR_CLK_WDQ, DDR3 write data clock, set to 90 degrees out of phase compared to BHG_*|pll1[0].
  -        *DDR3_PLL5*clk[2] -> DDR_CLK_RDQ, DDR3 read data clock, at power-up, this clock is automatically tuned to the best phase to capture the read data coming back from the DDR3 ram chips.
  -        *DDR3_PLL5*clk[3] -> DDR_CLK_50,  This is the interface clock for the DDR3_PHY controller and it runs at 50% speed of the DDR_CLK clock.
- -        *DDR3_PLL5*clk[3] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
+ -        *DDR3_PLL5*clk[4] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
 
  -         CMD_CLK                          This clock is tied to either DDR_CLK, DDR_CLK_50, or DDR_CLK_25 depending on parameter 'INTERFACE_SPEED' being Full, Half, or Quarter.
  -                                          This clock drives the multiport COMMANDER module and sets it's interface clock speed.
