@@ -14,6 +14,7 @@ Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyc
  -             Xilinx Artix 7 series.      (Coming soon)
 
  - DECA projects eval board here: https://www.arrow.com/en/products/deca/arrow-development-tools
+ - EEVBlog DECA guide here: https://www.eevblog.com/forum/fpga/arrow-deca-max-10-board-for-$37/
 
 *************************************************************
 *** Release V1.00, August 27, 2021 **************************
