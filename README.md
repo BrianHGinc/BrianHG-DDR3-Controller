@@ -1,6 +1,6 @@
 # BrianHG-DDR3-Controller
 SystemVerilog DDR3 Memory Controller
-
+Up to 16 read and 16 write ports with configurable priority encoding.
 
 BrianHG_DDR3_README_V1.00.txt Status/Revision Log, Instructions.
 August 27, 2021.
