@@ -1,5 +1,7 @@
 # BrianHG-DDR3-Controller
-A SystemVerilog DDR3 Memory Controller with up to 16 read and 16 write ports with configurable width priority encoding.
+A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable width, priority, auto-burst size & smart cache. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove function. 
+
+Fully functional hardware tested on Arrows DECA developement board with a 512mb DDR3 ram chip generating a 1080p video output with an ellipse generator geometry graphics engine.
 
 Fully documented source code.
 
