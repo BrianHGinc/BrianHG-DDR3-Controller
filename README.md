@@ -1,7 +1,7 @@
 # BrianHG-DDR3-Controller
 A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable width, priority, auto-burst size & smart cache. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove error free comand functionality. 
 
-Fully functional hardware tested on Arrows DECA developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color video output with a random 3D ellipse geometry drawing graphics engine.
+Fully functional hardware tested on Arrow's DECA 37$ MAX10 developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color HDMI video output with a random 3D ellipse geometry drawing graphics engine.
 
 True 400MHz support for Altera/Intel Cyclone/Max speed grade -6, 300MHz for -8. -8 can be overclockded to 400MHz. (-6 can run at 500MHz/1GTPS is unofficial but functional on Arrow's DECA board using 1x 16bit DDR3 ram chip)
 
