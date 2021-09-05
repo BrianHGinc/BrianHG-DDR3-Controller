@@ -1,0 +1,55 @@
+Log file requested in 'DDR3_CMD_SEQ_script.txt' at line#  34.
+
+Line#  36, Delaying for    1 clock cycles
+Line#  37, 
+Line#  39, Write bank (0), row (000a), cas (00a) with data (0000000000000099).
+                                        MASK -> (1111111111111111).
+Line#  40, Delaying for    4 clock cycles
+Line#  41, 
+Line#  42, Delaying for    8 clock cycles
+Line#  43, Write bank (1), row (0001), cas (000) with data (0000000000000001).
+                                        MASK -> (1111111111111111).
+Line#  44, Write bank (2), row (0000), cas (000) with data (0000000000000002).
+                                        MASK -> (1111111111111111).
+Line#  45, Write bank (3), row (0000), cas (000) with data (0000000000000003).
+                                        MASK -> (1111111111111111).
+Line#  47, Write bank (0), row (0000), cas (001) with data (0000000000000004).
+                                        MASK -> (1111111111111111).
+Line#  48, Write bank (0), row (0000), cas (002) with data (0000000000000005).
+                                        MASK -> (1111111111111111).
+Line#  50, Write bank (0), row (0000), cas (003) with data (0000000000000006).
+                                        MASK -> (1111111111111111).
+Line#  51, Write bank (0), row (0000), cas (007) with data (0000000000000007).
+                                        MASK -> (1111111111111111).
+Line#  52, Write bank (0), row (0000), cas (008) with data (0000000000000008).
+                                        MASK -> (1111111111111111).
+Line#  53, Write bank (0), row (0000), cas (009) with data (0000000000000009).
+                                        MASK -> (1111111111111111).
+Line#  54, Write bank (0), row (0000), cas (00a) with data (000000000000000a).
+                                        MASK -> (1111111111111111).
+Line#  56, Read  bank (1), row (0000), cas (000), to vector (0001).
+Line#  57, 
+Line#  58, Read  bank (2), row (0000), cas (000), to vector (0002).
+Line#  59, Read  bank (0), row (0000), cas (001), to vector (0003).
+Line#  60, Read  bank (0), row (0001), cas (001), to vector (0004).
+Line#  61, Read  bank (1), row (0000), cas (001), to vector (0005).
+Line#  62, Read  bank (0), row (0001), cas (002), to vector (0006).
+Line#  64, Delaying for    1 clock cycles
+Line#  65, 
+Line#  66, Delaying for    1 clock cycles
+Line#  67, 
+Line#  68, Delaying for    2 clock cycles
+Line#  69, 
+Line#  70, Delaying for    1 clock cycles
+Line#  71, 
+Line#  72, Delaying for    1 clock cycles
+Line#  73, 
+Line#  75, 
+Line#  77, Write bank (0), row (000a), cas (00a) with data (0000000000000001).
+                                        MASK -> (1111111111111111).
+Line#  78, Write bank (0), row (000b), cas (00a) with data (0000000000000002).
+                                        MASK -> (1111111111111111).
+Line#  80, @END command at line number   80.
+
+End of command source ASCII file 'DDR3_CMD_SEQ_script.txt'.
+  80 lines processed.

@@ -1,0 +1,53 @@
+Log file requested in 'DDR3_PHY_script.txt' at line#  34.
+
+Line#  41, Write address (00100000) with data (0123456789abcdef0123456789abcdef).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  42, Write address (00100100) with data (00112233445566778899aabbccddeeff).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  43, Write address (00100200) with data (11112222333344445555666677778888).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  44, Write address (00200800) with data (0123456789abcdef0123456789abcdef).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  45, Write address (00000800) with data (00112233445566778899aabbccddeeff).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  46, Write address (00000000) with data (0123456789abcdef0123456789abcdef).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  47, Write address (00000000) with data (00112233445566778899aabbccddeeff).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  48, Write address (00000000) with data (00112233445566778899aabbccddeeff).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  50, Write address (00013800) with data (88887777666655554444333322221111).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  51, Write address (00013820) with data (0000ffffeeeeddddccccbbbbaaaa9999).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  52, Write address (00013820) with data (9999aaaabbbbccccddddeeeeffff0000).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  53, Write address (00013830) with data (11112222333344445555666677778888).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  54, Delaying for  100 nanoseconds.
+Line#  55, Read  address (00013800) to vector (00000001).
+Line#  56, Delaying for  100 nanoseconds.
+Line#  57, Read  address (00013820) to vector (00000002).
+Line#  58, Read  address (00013830) to vector (00000005).
+Line#  59, Write address (00013800) with data (0123456789abcdef0123456789abcdef).
+                                      MASK -> (11111111111111111111111111111111).
+Line#  60, Read  address (00013800) to vector (00000003).
+Line#  61, Read  address (00a13820) to vector (00000004).
+Line#  62, Read  address (00013820) to vector (00000000).
+Line#  63, Read  address (00013830) to vector (00000001).
+Line#  64, Read  address (00013820) to vector (00000002).
+Line#  65, Read  address (00013830) to vector (00000003).
+Line#  66, Read  address (00013820) to vector (00000004).
+Line#  67, Read  address (00013830) to vector (00000005).
+Line#  68, Read  address (00013820) to vector (00000006).
+Line#  70, Delaying for  100 nanoseconds.
+Line#  71, Read  address (00013800) to vector (00000000).
+Line#  72, Read  address (00013820) to vector (00000001).
+Line#  73, Read  address (00013800) to vector (00000002).
+Line#  74, Read  address (00013820) to vector (00000003).
+Line#  75, Read  address (00013800) to vector (00000004).
+Line#  76, Read  address (00013820) to vector (00000005).
+Line#  79, @END command at line number   79.
+
+End of command source ASCII file 'DDR3_PHY_script.txt'.
+  79 lines processed.

@@ -1,0 +1,104 @@
+Log file requested in 'DDR3_CONTROLLER_top_script.txt' at line#  34.
+
+Line#  35, Sending a reset to the BrianHG_DDR3_PHY_SEQ module.
+Line#  38, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  39, Write on port  0 at address (00000100) with data (11111111111111111111111111111111).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  40, Write on port  0 at address (00000200) with data (22222222222222222222222222222222).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  41, Write on port  0 at address (00000300) with data (33333333333333333333333333333333).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  42, Write on port  0 at address (00000400) with data (44444444444444444444444444444444).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  43, Write on port  0 at address (00000500) with data (55555555555555555555555555555555).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  44, Write on port  0 at address (00000600) with data (66666666666666666666666666666666).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  45, Write on port  0 at address (00000700) with data (77777777777777777777777777777777).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  46, Write on port  0 at address (00000800) with data (88888888888888888888888888888888).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  47, Write on port  0 at address (00000900) with data (99999999999999999999999999999999).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  48, Write on port  0 at address (00000a00) with data (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  49, Write on port  0 at address (00000b00) with data (bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  50, Write on port  0 at address (00000c00) with data (cccccccccccccccccccccccccccccccc).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  51, Write on port  0 at address (00000d00) with data (dddddddddddddddddddddddddddddddd).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  52, Write on port  0 at address (00000e00) with data (eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  53, Write on port  0 at address (00000f00) with data (ffffffffffffffffffffffffffffffff).
+                                         MASK -> (11111111111111111111111111111111).
+Line#  56, Delaying for  100 nanoseconds.
+Line#  58, Read on port  0 at address (00000000) to vector (00).
+Line#  58, Read on port  0 at address (00000100) to vector (11).
+Line#  58, Read on port  0 at address (00000200) to vector (22).
+Line#  58, Read on port  0 at address (00000300) to vector (33).
+Line#  58, Read on port  0 at address (00000400) to vector (44).
+Line#  58, Read on port  0 at address (00000500) to vector (55).
+Line#  58, Read on port  0 at address (00000600) to vector (66).
+Line#  58, Read on port  0 at address (00000700) to vector (77).
+Line#  58, Read on port  0 at address (00000800) to vector (88).
+Line#  58, Read on port  0 at address (00000900) to vector (99).
+Line#  58, Read on port  0 at address (00000a00) to vector (aa).
+Line#  58, Read on port  0 at address (00000b00) to vector (bb).
+Line#  58, Read on port  0 at address (00000c00) to vector (cc).
+Line#  58, Read on port  0 at address (00000d00) to vector (dd).
+Line#  58, Read on port  0 at address (00000e00) to vector (ee).
+Line#  58, Read on port  0 at address (00000f00) to vector (ff).
+Line#  59, Read on port  0 at address (00000000) to vector (00).
+Line#  59, Read on port  0 at address (00000100) to vector (11).
+Line#  59, Read on port  0 at address (00000200) to vector (22).
+Line#  59, Read on port  0 at address (00000300) to vector (33).
+Line#  59, Read on port  0 at address (00000400) to vector (44).
+Line#  59, Read on port  0 at address (00000500) to vector (55).
+Line#  59, Read on port  0 at address (00000600) to vector (66).
+Line#  59, Read on port  0 at address (00000700) to vector (77).
+Line#  59, Read on port  0 at address (00000800) to vector (88).
+Line#  59, Read on port  0 at address (00000900) to vector (99).
+Line#  59, Read on port  0 at address (00000a00) to vector (aa).
+Line#  59, Read on port  0 at address (00000b00) to vector (bb).
+Line#  59, Read on port  0 at address (00000c00) to vector (cc).
+Line#  59, Read on port  0 at address (00000d00) to vector (dd).
+Line#  59, Read on port  0 at address (00000e00) to vector (ee).
+Line#  59, Read on port  0 at address (00000f00) to vector (ff).
+Line#  60, Read on port  0 at address (00000000) to vector (00).
+Line#  60, Read on port  0 at address (00000100) to vector (11).
+Line#  60, Read on port  0 at address (00000200) to vector (22).
+Line#  60, Read on port  0 at address (00000300) to vector (33).
+Line#  60, Read on port  0 at address (00000400) to vector (44).
+Line#  60, Read on port  0 at address (00000500) to vector (55).
+Line#  60, Read on port  0 at address (00000600) to vector (66).
+Line#  60, Read on port  0 at address (00000700) to vector (77).
+Line#  60, Read on port  0 at address (00000800) to vector (88).
+Line#  60, Read on port  0 at address (00000900) to vector (99).
+Line#  60, Read on port  0 at address (00000a00) to vector (aa).
+Line#  60, Read on port  0 at address (00000b00) to vector (bb).
+Line#  60, Read on port  0 at address (00000c00) to vector (cc).
+Line#  60, Read on port  0 at address (00000d00) to vector (dd).
+Line#  60, Read on port  0 at address (00000e00) to vector (ee).
+Line#  60, Read on port  0 at address (00000f00) to vector (ff).
+Line#  61, Read on port  0 at address (00000000) to vector (00).
+Line#  61, Read on port  0 at address (00000100) to vector (11).
+Line#  61, Read on port  0 at address (00000200) to vector (22).
+Line#  61, Read on port  0 at address (00000300) to vector (33).
+Line#  61, Read on port  0 at address (00000400) to vector (44).
+Line#  61, Read on port  0 at address (00000500) to vector (55).
+Line#  61, Read on port  0 at address (00000600) to vector (66).
+Line#  61, Read on port  0 at address (00000700) to vector (77).
+Line#  61, Read on port  0 at address (00000800) to vector (88).
+Line#  61, Read on port  0 at address (00000900) to vector (99).
+Line#  61, Read on port  0 at address (00000a00) to vector (aa).
+Line#  61, Read on port  0 at address (00000b00) to vector (bb).
+Line#  61, Read on port  0 at address (00000c00) to vector (cc).
+Line#  61, Read on port  0 at address (00000d00) to vector (dd).
+Line#  61, Read on port  0 at address (00000e00) to vector (ee).
+Line#  61, Read on port  0 at address (00000f00) to vector (ff).
+Line#  64, @END command at line number   64.
+
+End of command source ASCII file 'DDR3_CONTROLLER_top_script.txt'.
+  64 lines processed.

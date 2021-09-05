@@ -1,0 +1,80 @@
+******************************************************************************************************************
+BrianHG_DDR3_CMD_SEQUENCER test-bench command list.
+
+Written by Brian Guralnick.
+June 20, 2021.
+
+******************************************************************************************************************
+
+For a command to be accepted, it must have the 'at' symbol (SHIFT 2) in front of it.
+Example:
+
+[at]COMMAND_STRING <arg> <arg> <arg> ...
+
+***Removing the [at] symbol means the command is ignored and it is treated as text comments.
+Multiple commands are allowed on one line so long as each command has an [at] symbol in front of it.
+
+******************************************************************************************************************
+Commands: (*** No spaces allowed in any <FILE_NAME>)
+
+[at]LOG_FILE  <FILE_NAME>            > Generates a results log file.         (No spaces allowed in file name).
+[at]END_LOG_FILE                     > Forcefully closes/ends the log file.
+[at]STOP                             > Stops the script processing/simulation.  Click on 'run -all' to continue script after the stop command.
+[at]END                              > Ends the script processing/simulation. (You may now paint/set your own manual controls in the waveform view and run -all)
+
+[at]RESET                            > Hard Resets the system
+
+[at]CMD READ  <'h BANK> <'h ROW> <'h COLUMN> <8'h VECTOR>              > Transmits a read request.
+[at]CMD WRITE <'h BANK> <'h ROW> <'h COLUMN> <8'b MASK>  <64'hex DATA> > Transmits a write request.
+[at]CMD DELAY < # of clocks >                                          > Adds a huge delay.
+[at]CMD OUTENA  <1/0>                                                  > Enables / disables output read data enable.
+[at]CMD AWAIT   <1/0>                                                  > Enables / disables the auto-wait for the the busy flag to clear before sending a command.
+[at]CMD REFRESH                                                        > Request a refresh.
+
+@LOG_FILE  DDR3_CMD_SEQ_script_log.txt
+
+@CMD DELAY  1
+@CMD AWAIT  1
+
+@CMD WRITE  0 A A 11111111 99
+@CMD DELAY  4
+@CMD OUTENA 1  Enable output data.
+@CMD DELAY  8
+@CMD WRITE  1 1 0 11111111 1
+@CMD WRITE  2 0 0 11111111 2
+@CMD WRITE  3 0 0 11111111 3
+ CMD DELAY  1
+@CMD WRITE  0 0 1 11111111 4
+@CMD WRITE  0 0 2 11111111 5
+ CMD OUTENA 1
+@CMD WRITE  0 0 3 11111111 6
+@CMD WRITE  0 0 7 11111111 7
+@CMD WRITE  0 0 8 11111111 8
+@CMD WRITE  0 0 9 11111111 9
+@CMD WRITE  0 0 a 11111111 a
+ 
+@CMD READ   1 0 0 01
+@CMD OUTENA 1
+@CMD READ   2 0 0 02
+@CMD READ   0 0 1 03
+@CMD READ   0 1 1 04
+@CMD READ   1 0 1 05
+@CMD READ   0 1 2 06
+
+@CMD DELAY  1
+@CMD OUTENA 1  Enable output data.
+@CMD DELAY  1
+@CMD OUTENA 0  Disable output data.
+@CMD DELAY  2
+@CMD OUTENA 1  Enable output data.
+@CMD DELAY  1
+@CMD OUTENA 0  Disable output data.
+@CMD DELAY  1
+@CMD OUTENA 1  Enable output data.
+
+@CMD REFRESH
+
+@CMD WRITE  0 A A 11111111 1
+@CMD WRITE  0 B A 11111111 2
+
+@END

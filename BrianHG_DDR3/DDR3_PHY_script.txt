@@ -1,0 +1,106 @@
+******************************************************************************************************************
+BrianHG_DDR3_PHY_SEQ test-bench command list.
+
+Written by Brian Guralnick.
+March 10, 2021.
+
+******************************************************************************************************************
+
+For a command to be accepted, it must have the 'at' symbol (SHIFT 2) in front of it.
+Example:
+
+[at]COMMAND_STRING <arg> <arg> <arg> ...
+
+***Removing the [at] symbol means the command is ignored and it is treated as text comments.
+Multiple commands are allowed on one line so long as each command has an [at] symbol in front of it.
+
+******************************************************************************************************************
+Commands: (*** No spaces allowed in any <FILE_NAME>)
+
+[at]LOG_FILE  <FILE_NAME>            > Generates a results log file.         (No spaces allowed in file name).
+[at]END_LOG_FILE                     > Forcefully closes/ends the log file.
+[at]STOP                             > Stops the script processing/simulation.  Click on 'run -all' to continue script after the stop command.
+[at]END                              > Ends the script processing/simulation. (You may now paint/set your own manual controls in the waveform view and run -all)
+
+[at]RESET                            > Hard Resets the system
+[at]CMD DLY   <#>                    > Delays for the <#> DDR3_CK cycles.
+[at]WAIT_SEQ_READY                   > Waits for the DDR3 sequencer to be ready
+
+[at]CMD READ  <32'hex ADDR> <16'hex VECTOR>                               > Transmits a read request at address ADDR with the target vector set to VECTOR.
+[at]CMD WRITE <32'hex ADDR> <16'binary Write Enable MASK>  <128'hex DATA> > Transmits a read request at address ADDR with the target vector set to VECTOR.
+[at]CMD DELAY <time in nanoseconds>                                       > Adds a huge delay.
+
+
+@LOG_FILE  DDR3_PHY_script_log.txt
+
+ CMD WRITE 00013800 11111111 0123456789abcdef  This is a test for the 8 bit DDR3 chip
+
+
+// ********** Big test read, 248 lines, see allreq.txt. **********
+
+@CMD WRITE 00100000 1111111111111111 0123456789abcdef0123456789abcdef  This is a test for the 16bit DDR3 Chips.
+@CMD WRITE 00100100 1111111111111111 00112233445566778899aabbccddeeff
+@CMD WRITE 00100200 1111111111111111 11112222333344445555666677778888
+@CMD WRITE 00200800 1111111111111111 0123456789abcdef0123456789abcdef  This is a test for the 16bit DDR3 Chips.
+@CMD WRITE 00000800 1111111111111111 00112233445566778899aabbccddeeff
+@CMD WRITE 00000000 1111111111111111 0123456789abcdef0123456789abcdef  This is a test for the 16bit DDR3 Chips.
+@CMD WRITE 00000000 1111111111111111 00112233445566778899aabbccddeeff
+@CMD WRITE 00000000 1111111111111111 00112233445566778899aabbccddeeff
+
+@CMD WRITE 00013800 1111111111111111 88887777666655554444333322221111  This is a test for the 16bit DDR3 Chips.
+@CMD WRITE 00013820 1111111111111111 0000ffffeeeeddddccccbbbbaaaa9999
+@CMD WRITE 00013820 1111111111111111 9999aaaabbbbccccddddeeeeffff0000
+@CMD WRITE 00013830 1111111111111111 11112222333344445555666677778888
+@CMD DELAY 100
+@CMD READ  00013800 1
+@CMD DELAY 100
+@CMD READ  00013820 2
+@CMD READ  00013830 5
+@CMD WRITE 00013800 1111111111111111 0123456789abcdef0123456789abcdef  This is a test for the 16bit DDR3 Chips.
+@CMD READ  00013800 3
+@CMD READ  00a13820 4
+@CMD READ  00013820 0
+@CMD READ  00013830 1
+@CMD READ  00013820 2
+@CMD READ  00013830 3
+@CMD READ  00013820 4
+@CMD READ  00013830 5
+@CMD READ  00013820 6
+
+@CMD DELAY 100
+@CMD READ  00013800 0
+@CMD READ  00013820 1
+@CMD READ  00013800 2
+@CMD READ  00013820 3
+@CMD READ  00013800 4
+@CMD READ  00013820 5
+// ********** Big test read, 248 lines, see allreq.txt. **********
+
+@END
+
+@CMD DELAY 100
+@CMD READ  00413800 a
+@CMD READ  00013800 b
+
+
+@END
+// Add these lines to check the read vector cache 'stat' flag for overflow.
+@CMD READ  00013800 0
+@CMD READ  00013820 1
+@CMD READ  00013800 2
+@CMD READ  00013820 3
+@CMD READ  00013800 4
+@CMD READ  00013820 5
+@CMD READ  00013800 0
+@CMD READ  00013820 1
+@CMD READ  00013800 2
+@CMD READ  00013820 3
+@CMD READ  00013800 4
+@CMD READ  00013820 5
+@CMD READ  00013800 0
+@CMD READ  00013820 1
+@CMD READ  00013800 2
+@CMD READ  00013820 3
+@CMD READ  00013800 4
+@CMD READ  00013820 5
+@END

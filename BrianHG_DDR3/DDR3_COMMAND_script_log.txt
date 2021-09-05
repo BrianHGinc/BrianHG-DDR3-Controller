@@ -1,0 +1,105 @@
+Log file requested in 'DDR3_COMMAND_script.txt' at line#  34.
+
+Line#  35, Sending a reset to the BrianHG_DDR3_PHY_SEQ module.
+Line#  41, Write on port  1 at address (0100) with data (0000000000000100).
+                                         MASK -> (1111111111111111).
+Line#  42, Write on port  1 at address (0101) with data (0000000000000101).
+                                         MASK -> (1111111111111111).
+Line#  43, Write on port  1 at address (0102) with data (0000000000000102).
+                                         MASK -> (1111111111111111).
+Line#  44, Write on port  1 at address (0103) with data (0000000000000103).
+                                         MASK -> (1111111111111111).
+Line#  45, Write on port  1 at address (0104) with data (0000000000000104).
+                                         MASK -> (1111111111111111).
+Line#  46, Write on port  1 at address (0105) with data (0000000000000105).
+                                         MASK -> (1111111111111111).
+Line#  47, Write on port  1 at address (0106) with data (0000000000000106).
+                                         MASK -> (1111111111111111).
+Line#  48, Write on port  1 at address (0107) with data (0000000000000107).
+                                         MASK -> (1111111111111111).
+Line#  50, Write on port  1 at address (0108) with data (0000000000000108).
+                                         MASK -> (1111111111111111).
+Line#  51, Write on port  1 at address (0109) with data (0000000000000109).
+                                         MASK -> (1111111111111111).
+Line#  52, Write on port  1 at address (010a) with data (000000000000010a).
+                                         MASK -> (1111111111111111).
+Line#  53, Write on port  1 at address (010b) with data (000000000000010b).
+                                         MASK -> (1111111111111111).
+Line#  54, Write on port  1 at address (010c) with data (000000000000010c).
+                                         MASK -> (1111111111111111).
+Line#  55, Write on port  1 at address (010d) with data (000000000000010d).
+                                         MASK -> (1111111111111111).
+Line#  56, Write on port  1 at address (010e) with data (000000000000010e).
+                                         MASK -> (1111111111111111).
+Line#  57, Write on port  1 at address (010f) with data (000000000000010f).
+                                         MASK -> (1111111111111111).
+Line#  59, Write on port  1 at address (0110) with data (0000000000000110).
+                                         MASK -> (1111111111111111).
+Line#  61, Write on port  0 at address (0100) with data (0000000000000100).
+                                         MASK -> (1111111111111111).
+Line#  62, Write on port  0 at address (0101) with data (0000000000000101).
+                                         MASK -> (1111111111111111).
+Line#  63, Write on port  0 at address (0102) with data (0000000000000102).
+                                         MASK -> (1111111111111111).
+Line#  64, Write on port  0 at address (0103) with data (0000000000000103).
+                                         MASK -> (1111111111111111).
+Line#  65, Write on port  0 at address (0104) with data (0000000000000104).
+                                         MASK -> (1111111111111111).
+Line#  66, Write on port  0 at address (0105) with data (0000000000000105).
+                                         MASK -> (1111111111111111).
+Line#  67, Write on port  0 at address (0106) with data (0000000000000106).
+                                         MASK -> (1111111111111111).
+Line#  68, Write on port  0 at address (0107) with data (0000000000000107).
+                                         MASK -> (1111111111111111).
+Line#  70, Write on port  0 at address (0108) with data (0000000000000108).
+                                         MASK -> (1111111111111111).
+Line#  71, Write on port  0 at address (0109) with data (0000000000000109).
+                                         MASK -> (1111111111111111).
+Line#  72, Write on port  0 at address (010a) with data (000000000000010a).
+                                         MASK -> (1111111111111111).
+Line#  73, Write on port  0 at address (010b) with data (000000000000010b).
+                                         MASK -> (1111111111111111).
+Line#  74, Write on port  0 at address (010c) with data (000000000000010c).
+                                         MASK -> (1111111111111111).
+Line#  75, Write on port  0 at address (010d) with data (000000000000010d).
+                                         MASK -> (1111111111111111).
+Line#  76, Write on port  0 at address (010e) with data (000000000000010e).
+                                         MASK -> (1111111111111111).
+Line#  77, Write on port  0 at address (010f) with data (000000000000010f).
+                                         MASK -> (1111111111111111).
+Line#  79, Write on port  0 at address (0110) with data (0000000000000110).
+                                         MASK -> (1111111111111111).
+Line#  82, Delaying for  100 nanoseconds.
+Line#  86, Read on port  1 at address (0100) to vector (00).
+Line#  87, Read on port  0 at address (0101) to vector (01).
+Line#  88, Read on port  1 at address (0102) to vector (02).
+Line#  89, Read on port  0 at address (0103) to vector (03).
+Line#  90, Read on port  1 at address (0104) to vector (04).
+Line#  91, Read on port  0 at address (0105) to vector (05).
+Line#  92, Read on port  1 at address (0106) to vector (06).
+Line#  93, Read on port  0 at address (0107) to vector (07).
+Line#  94, Read on port  1 at address (0108) to vector (08).
+Line#  95, Read on port  0 at address (0109) to vector (09).
+Line#  96, Read on port  1 at address (010a) to vector (0a).
+Line#  97, Read on port  0 at address (010b) to vector (0b).
+Line#  98, Read on port  1 at address (010c) to vector (0c).
+Line#  99, Read on port  0 at address (010d) to vector (0d).
+Line# 100, Read on port  1 at address (010e) to vector (0e).
+Line# 101, Read on port  0 at address (010f) to vector (0f).
+Line# 102, Read on port  1 at address (0110) to vector (10).
+Line# 105, Delaying for  100 nanoseconds.
+Line# 108, Read on port  0 at address (0114) to vector (18).
+Line# 109, Read on port  1 at address (0120) to vector (20).
+Line# 110, Read on port  1 at address (0124) to vector (28).
+Line# 111, Read on port  0 at address (0130) to vector (30).
+Line# 112, Read on port  0 at address (0134) to vector (38).
+Line# 113, Read on port  1 at address (0140) to vector (40).
+Line# 114, Read on port  1 at address (0144) to vector (48).
+Line# 115, Read on port  0 at address (0150) to vector (50).
+Line# 116, Read on port  0 at address (0158) to vector (58).
+Line# 117, Read on port  1 at address (0160) to vector (60).
+Line# 118, Read on port  0 at address (0178) to vector (68).
+Line# 121, @END command at line number  121.
+
+End of command source ASCII file 'DDR3_COMMAND_script.txt'.
+ 121 lines processed.
