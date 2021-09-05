@@ -12,7 +12,7 @@ Written by Brian Guralnick.
 For public use.
 Leave questions in the https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
 
-Designed for Altera/Intel Quartus Cyclone V/10/MAX10 and others. (Unofficial Cyclone III & IV, may require overclocking.)
+Designed for Altera/Intel Quartus Cyclone III/IV/V/10/MAX10 and others.
  -             Lattice ECP5/LFE5U series.  (Coming soon)
  -             Xilinx Artix 7 series.      (Coming soon)
 
