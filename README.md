@@ -13,8 +13,8 @@ For public use.
 Leave questions in the https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
 
 Designed for Altera/Intel Quartus Cyclone III/IV/V/10/MAX10 and others.
- -             Lattice ECP5/LFE5U series.  (Coming soon)
- -             Xilinx Artix 7 series.      (Coming soon)
+ - Lattice ECP5/LFE5U series.  (Coming soon)
+ - Xilinx Artix 7 series.      (Coming soon)
 
  - DECA projects eval board here: https://www.arrow.com/en/products/deca/arrow-development-tools
  - EEVBlog DECA guide here: https://www.eevblog.com/forum/fpga/arrow-deca-max-10-board-for-$37/
@@ -90,6 +90,7 @@ Added these new system parameters to allow you to shrink LC/LUT count for simple
 
 parameter bit        BHG_OPTIMIZE_SPEED      = 1,                // Use '1' for better FMAX performance, this will increase logic cell usage in the BrianHG_DDR3_PHY_SEQ module.
                                                                  // It is recommended that you use '1' when running slowest -8 Altera fabric FPGA above 300MHz or Altera -6 fabric above 350MHz.
+                                                                 
 parameter bit        BHG_EXTRA_SPEED         = 1,                // Use '1' for even better FMAX performance or when overclocking the core.  This will increase logic cell usage.
 
 
