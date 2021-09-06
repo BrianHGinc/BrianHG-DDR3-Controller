@@ -3,7 +3,7 @@ A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable width, pr
 
 Fully functional hardware tested on Arrow's DECA 37$ MAX10 developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color HDMI video output with a random 2D ellipse geometry drawing graphics engine.
 
-True 400MHz support for Altera/Intel Cyclone/Max speed grade -6, 300MHz for -8. -8 can be overclockded to 400MHz. (-6 can run at 500MHz/1GTPS is unofficial but functional on Arrow's DECA board using 1x 16bit DDR3 ram chip)
+True 400MHz/800MTPS support for Altera/Intel Cyclone/Max speed grade -6, 300MHz for -8. -8 can be overclockded to 400MHz. (-6 can run at 500MHz/1GTPS is unofficial but functional on Arrow's DECA board using 1x 16bit DDR3 ram chip)
 
 BrianHG_DDR3_README_V1.00.txt Status/Revision Log, Instructions.
 August 27, 2021.
