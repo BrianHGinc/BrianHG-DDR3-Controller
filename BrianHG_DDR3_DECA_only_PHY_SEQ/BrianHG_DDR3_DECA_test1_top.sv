@@ -1,7 +1,7 @@
 // *********************************************************************
 //
 // BrianHG_DDR3_DECA_test1 which test runs only the BrianHG_DDR3_PHY_SEQ DDR3 sequencer plus it's dependencies.
-// Version 1.00, August 22, 2021.
+// Version 1.10, September 6, 2021.
 // 400MHz build, Half rate controller interface speed.
 //
 // Written by Brian Guralnick.
@@ -419,7 +419,7 @@ BrianHG_DDR3_PLL  #(.FPGA_VENDOR    (FPGA_VENDOR),    .INTERFACE_SPEED (INTERFAC
                     .DDR3_CLK_50    (DDR3_CLK_50),    .DDR3_CLK_25     (DDR3_CLK_25),
 
                     .phase_step     ( phase_step ),   .phase_updn      ( phase_updn ),
-                    .phase_sclk     ( CLK_IN ),       .phase_done      ( phase_done ) );
+                    .phase_sclk     ( DDR3_CLK_25 ),  .phase_done      ( phase_done ) );
 
 // ******************************************************************************************************
 // This module receives the commands from the multi-port ram controller and sequences the DDR3 IO pins.
