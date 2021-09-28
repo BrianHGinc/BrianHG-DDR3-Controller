@@ -16,3 +16,7 @@ The data mask pins also need to be placed inside the same associated x8 group.
 Remember to check the data sheets as some older Cyclones have higher IO performance on the top and bottom rows compared to the left and right sides.  You want to use the higher speed performance IOs.
 
 The CK and CK_n pins should be a differential pair close to the center of everything if you are using more than 1 DDR3 ram chip, otherwise, either end or center will do.
+
+Note that the MAX_10 devices as well as Cyclone_V do have a dedicated CK and CK_n pin for DDR3.
+
+Download Arrow DECA's schematics to get a complete example of the DDR3 wiring. 
