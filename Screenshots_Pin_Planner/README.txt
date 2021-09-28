@@ -17,6 +17,6 @@ Remember to check the data sheets as some older Cyclones have higher IO performa
 
 The CK and CK_n pins should be a differential pair close to the center of everything if you are using more than 1 DDR3 ram chip, otherwise, either end or center will do.
 
-Note that the MAX_10 devices as well as Cyclone_V do have a dedicated CK and CK_n pin for DDR3.
+Note that the MAX_10 devices as well as Cyclone_V do have a dedicated CK and CK_n pin for DDR3.  You will need to use these for your DDR3 CK/CK_n if you want full compatibility with Altera's DDR3 controller.
 
 Download Arrow DECA's schematics to get a complete example of the DDR3 wiring. 
