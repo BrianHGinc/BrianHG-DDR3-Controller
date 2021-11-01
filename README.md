@@ -1,4 +1,17 @@
 # BrianHG-DDR3-Controller
+---------------------------------
+ V1.5 demo preview:
+---------------------------------
+
+- Multiport interface can now officially reach 200 MHz in half rate mode and potentially be overclocked to 250MHz.
+See my Arrow DECA BrianHG_DDR3_Controller V1.5 overclocked to 500MHz in Half-rate mode.
+
+Download file: BrianHG_DDR3_DECA_DDR3_v1.5_GFX_DEMO.zip  -  Don't forget to read the readme file...
+
+Here : https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg3785711/#msg3785711
+
+---------------------------------
+# V1.0
 A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable widths, priority, auto-burst size & smart cache for each port. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove error free command functionality. 
 
 Fully functional hardware tested on Arrow's DECA 37$ MAX10 developement board with a 512mb DDR3 ram chip generating a 1080p 32bit color HDMI video output with a random 2D ellipse geometry drawing graphics engine.
