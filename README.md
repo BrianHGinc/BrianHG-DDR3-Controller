@@ -197,42 +197,35 @@ Source Files:
   - BrianHG_draw_test_patterns_tb.sv  -> Test bench for the 'BrianHG_draw_test_patterns.sv'.
 
 
-
-
-*********************************************************
-*********************************************************
 *********************************************************
 Example Quartus Prime Projects, Clocks and timing specs.
 *********************************************************
-*********************************************************
-*********************************************************
 
-    Though the following projects have been setup for Arrow's DECA board, they should give you an idea of how
-    to initiate and interface with the BrianHG_DDR3 controller system.  All deep documentation is written in the source code.
-    Modelsim simulations are covered in the next section.
-    
-    When engineering your code, to improve FMAX, it is sometimes beneficial to change this setting in the menu:
-    Assignments / Settings / Compiler Settings / Advanced Settings (Synthesis) / Pre-Mapping Resynthesis Optimization = ON.
-    Note that in the main compiler settings page, 'Performance High Effort' or 'Balanced' usually reach a good FMAX while
-    'Performance Aggressive' can sometimes lead to a worse FMAX.  This problem should be improved upon as it is on the list
-    of * Known Issues with release v0.9v *.
+  Though the following projects have been setup for Arrow's DECA board, they should give you an idea of how to initiate and interface with the BrianHG_DDR3 controller system.  All deep documentation is written in the source code.  Modelsim simulations are covered in the next section.
 
 
-    RS232 Debugger and blue status leds:
-    
+  When engineering your code, to improve FMAX, it is sometimes beneficial to change this setting in the menu:
+ - Assignments / Settings / Compiler Settings / Advanced Settings (Synthesis) / Pre-Mapping Resynthesis Optimization = ON.
+ - Note that in the main compiler settings page, 'Performance High Effort' or 'Balanced' usually reach a good FMAX while 'Performance Aggressive' can sometimes lead to a worse FMAX.  This problem should be improved upon as it is on the list of * Known Issues with release v0.9v *.
+
+
+ - RS232 Debugger and blue status leds:
+******************************************
     The Blue LEDs will match the 'In3[7:0]' (Green box at the bottom left hand corner) in the RS232 debugger hex editor.
-    0 = Stuck failed to power up.
-    1 = Stuck during read calibration trying to seek for the lowest invalid tuning position.
-    2 = Stuck during read calibration trying to seek to the lowest valid tuning position
+    0 = Stuck failed to power up.   
+    1 = Stuck during read calibration trying to seek for the lowest invalid tuning position. 
+    2 = Stuck during read calibration trying to seek to the lowest valid tuning position.
     3 = Stuck during read calibration trying to seek to the highest invalid tuning position.
     
-    *** Note that Blue LED[7] is also tied to the RS232 RXD/TXD activity.  So it may be blinking when the debugger is connected and running.
+    *** Note that Blue LED[7] is also tied to the RS232 RXD/TXD activity.
+        So it may be blinking when the debugger is connected and running.
+        
     *** Note that the RS232 debugger RXD input connected to GPIO0_D[3] and the TXD output is connected to GPIO0_D[1].
-
+    
     Successful setup and tuning of the DDR3 will show:
     8'bxxxxxxx0'  The width of the 'x' shows the number of valid tuning positions where the read data passed the read test.
                   The code tuned the PLL to the center-left position before beginning function and setting DDR3_READY flag.
-
+                  
     RS232 Debugger 'In2[7:0] & In1[7:0]' = A 16 bit read data counter.  When refreshing the display, the counter in the MSB
     8 bits, 'In2[7:0]' should increment.  'In1[7:0]' will only change from 0 if there are read errors or read requests are lost.
     
@@ -243,13 +236,13 @@ Example Quartus Prime Projects, Clocks and timing specs.
     RS232 Debugger 'Out3[7:0]' (Red box bottom right corner, click on a bit to swap it's value)
                     Out3[7]  = Reset the DDR3_PHY_SEQ DDR3 controller.
                     Out3[6]  = Reset the DDR3_COMMANDER, multiport commander only.
-
+    
     For the GFX Demo:
                     Out2[7]  = Swap the scroll screen enable.
                     Out2[6]  = Swap the ellipse draw enable.
                     Out2[1]  = Draw binary counter color pattern.
                     Out2[0]  = Draw random noise.
-
+******************************************
 
 Folders:
 
@@ -265,44 +258,32 @@ Folders:
  - BrianHG_DDR3_CV_PHY_ONLY_FMAX_Test         375MHz, Hypothetical Cyclone V-6 DDR3 PHY Only controller with RS232 debug port build to verify FMAX. (375MHz only, no  multiport)
  - BrianHG_DDR3_GFX_source                    -> Only contains source code for rendering the random ellipses demo.
 
-    For the pll clocks:
- -        MAX10_CLK1_50     -> CLK_IN,      This is the source oscillator clock at 50MHz.
- -        *DDR3_PLL5*clk[0] -> DDR_CLK,     DDR3 clock and runs at the 300-400MHz.
- -        *DDR3_PLL5*clk[1] -> DDR_CLK_WDQ, DDR3 write data clock, set to 90 degrees out of phase compared to BHG_*|pll1[0].
- -        *DDR3_PLL5*clk[2] -> DDR_CLK_RDQ, DDR3 read data clock, at power-up, this clock is automatically tuned to the best phase to capture the read data coming back from the DDR3 ram chips.
- -        *DDR3_PLL5*clk[3] -> DDR_CLK_50,  This is the interface clock for the DDR3_PHY controller and it runs at 50% speed of the DDR_CLK clock.
- -        *DDR3_PLL5*clk[4] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
+-----------------------
+- For the pll clocks:
 
- -         CMD_CLK                          This clock is tied to either DDR_CLK, DDR_CLK_50, or DDR_CLK_25 depending on parameter 'INTERFACE_SPEED' being Full, Half, or Quarter.
- -                                          This clock drives the multiport COMMANDER module and sets it's interface clock speed.
+  - MAX10_CLK1_50     -> CLK_IN,      This is the source oscillator clock at 50MHz.
+  - *DDR3_PLL5*clk[0] -> DDR_CLK,     DDR3 clock and runs at the 300-400MHz.
+  - *DDR3_PLL5*clk[1] -> DDR_CLK_WDQ, DDR3 write data clock, set to 90 degrees out of phase compared to BHG_*|pll1[0].
+  - *DDR3_PLL5*clk[2] -> DDR_CLK_RDQ, DDR3 read data clock, at power-up, this clock is automatically tuned to the best phase to capture the read data coming back from the DDR3 ram chips.
+  - *DDR3_PLL5*clk[3] -> DDR_CLK_50,  This is the interface clock for the DDR3_PHY controller and it runs at 50% speed of the DDR_CLK clock.
+  - *DDR3_PLL5*clk[4] -> DDR_CLK_25,  This is the reset and power-up logic clock for the DDR3_PHY controller and it runs at 25% speed of the DDR_CLK clock.
 
+  -  CMD_CLK                          This clock is tied to either DDR_CLK, DDR_CLK_50, or DDR_CLK_25 depending on parameter 'INTERFACE_SPEED' being Full, Half, or Quarter.  This clock drives the multiport COMMANDER module and sets it's interface clock speed.
+-----------------------
 
-    Note that the set_input_delays in the 'BrianHG_DDR3_DECA.sdc' are mandatory, otherwise the DDR will not initialize or read data properly.
-    The set_multicycle_path are optional, but recommended as they relax the timing constraints between the CLK_IN domain and the rest of the design
-    allowing the compiler to concentrate on the 300MHz section for raw speed.
-
+Note that the set_input_delays in the 'BrianHG_DDR3_DECA.sdc' are mandatory, otherwise the DDR will not initialize or read data properly.  The set_multicycle_path are optional, but recommended as they relax the timing constraints between the CLK_IN domain and the rest of the design allowing the compiler to concentrate on the 300MHz section for raw speed.
 
 
 *********************************************************
+Modelsim Test Benches and how to use:
+ - DDR3 Verilog model from Micron Required for this test-bench.
+ - The required DDR3 SDRAM Verilog Model V1.74 available at:
+ - https://media-www.micron.com/-/media/client/global/documents/products/sim-model/dram/ddr3/ddr3-sdram-verilog-model.zip?rev=925a8a05204e4b5c9c1364302de60126
+ - From the 'DDR3 SDRAM Verilog Model.zip', only these 2 files are required in the main simulation test-bench source folder:
+  - ddr3.v
+  - 4096Mb_ddr3_parameters.vh
+ - They must be placed inside the 'BrianHG_DDR3' folder, otherwise the 'BrianHG_DDR3_PHY_SEQ_tb.sv' and 'BrianHG_DDR3_CONTROLLER_top_tb.sv' will not work.
 *********************************************************
-*********************************************************
-Modelsim Test Benches and how to use.
-*********************************************************
-*********************************************************
-*********************************************************
-
-//************************************************************************************************************************************************************
-//*** DDR3 Verilog model from Micron Required for this test-bench.
-//*** The required DDR3 SDRAM Verilog Model V1.74 available at:
-//*** https://media-www.micron.com/-/media/client/global/documents/products/sim-model/dram/ddr3/ddr3-sdram-verilog-model.zip?rev=925a8a05204e4b5c9c1364302de60126
-//*** From the 'DDR3 SDRAM Verilog Model.zip', only these 2 files are required in the main simulation test-bench source folder:
-//
-//*** ddr3.v
-//*** 4096Mb_ddr3_parameters.vh
-//
-//*** They must be placed inside the 'BrianHG_DDR3' folder, otherwise the 'BrianHG_DDR3_PHY_SEQ_tb.sv' and 'BrianHG_DDR3_CONTROLLER_top_tb.sv' will not work.
-//************************************************************************************************************************************************************
-
 
 For all of these simulations, just open Modelsim all on it's own.
 Select 'File - Change Directory'
