@@ -2,7 +2,7 @@
 ---------------------------------
 Nov 1, 20201
 
- V1.5 .sof DECA demo preview: (The full v1.5 project files comming in 2 days)
+Demo preview v1.5 DECA eval board .sof programming file: (The full v1.5 project files comming in 2 days)
 ---------------------------------
 
 - Multiport interface can now officially reach 200 MHz in half rate mode and potentially be overclocked to 250MHz.
@@ -13,6 +13,8 @@ Download file: BrianHG_DDR3_DECA_DDR3_v1.5_GFX_DEMO.zip  -  Don't forget to read
 Here : https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg3785711/#msg3785711
 
 ---------------------------------
+August 27, 2021
+
 # V1.0
 A SystemVerilog DDR3 Controller, 16 read, 16 write ports, configurable widths, priority, auto-burst size & smart cache for each port. Fully documented source code. TestBenches included running with Micron's DDR3 Verilog model to prove error free command functionality. 
 
