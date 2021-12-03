@@ -14,6 +14,7 @@ In-depth instructions are located in the full v1.0 text release notes as well as
 
 These are the new main source file which operate according to the simplified block diagram:
 
+Written by Brian Guralnick. For public use. Leave questions in the https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
 
 New Version 1.5 source files:
 --------------------------
