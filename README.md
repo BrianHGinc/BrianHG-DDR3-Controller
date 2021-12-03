@@ -25,7 +25,7 @@ BrianHG_DDR3_COMMANDER_v15.sv
 
 BrianHG_DDR3_CONTROLLER_v15_top.sv
 - Uses the new commander v15.
-- Has a 'TAP' port which is a copy of all the writes being send to the DDR3.
+- Has a 'TAP' port which is a copy of all the writes being sent to the DDR3.
 
 
 New Version 1.5 example/demo projects (Arrow DECA board compatible):
