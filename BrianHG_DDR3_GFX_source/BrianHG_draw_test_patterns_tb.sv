@@ -63,7 +63,7 @@ input  logic         [1:0]                  switches           = 0    ;
 localparam      CLK_MHZ_IN  = 100 ;
 localparam      period      = 500000/CLK_MHZ_IN ;
 localparam      STOP_uS     = 1000000 ;
-localparam      endtime     = STOP_uS * 100;
+localparam      endtime     = STOP_uS * 1000;
 
 
  BrianHG_draw_test_patterns #(

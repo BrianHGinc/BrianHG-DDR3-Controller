@@ -4,7 +4,7 @@
 //     with the pixel depth, width and height of the output, and the beginning top left corner X&Y
 //     coordinates where to begin the framing of the output within the raster.
 //
-// Version 0.5, June 14, 2021.
+// Version 1.5, October 26, 2021.
 //
 //
 // Written by Brian Guralnick.
@@ -119,10 +119,10 @@ if (reset) begin              // RST_OUT is clocked on the CMD_CLK source.
 
                 if (!read_busy_in && !read_count[11]) begin     // When the read port isn't busy and the read count hasn't reached -1
                                                        read_req_out      <= 1 ;  // request a read.
+                                                       read_count        <= read_count - 1'd1 ;               // decrease the read counter.
                 end else                               read_req_out      <= 0 ;  // no read request.
 
-                if (read_req_out) begin                                     // only change these pointers after a 'read req' was sent out.
-                     read_count        <= read_count - 1'd1 ;               // decrease the read counter.
+                if (read_req_out ) begin                                     // only change these pointers after a 'read req' was sent out.
                      read_adr_out      <= PORT_ADDR_SIZE'(read_adr_out + READ_WORD_SIZE) ;   // increment the read address by the ready word size. 
                      lb_waddr          <= lb_waddr + 1'd1 ;                 // increment the destination line buffer memory X position pointer.
                 end

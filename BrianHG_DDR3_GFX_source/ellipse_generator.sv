@@ -308,7 +308,8 @@ casez ( sub_function )
     4'd5 : begin //  sub_function 5
      px                                 <= px + ry2 - alu_mult_y[BITS_RAD*3-1:0] ; // make px = px + ry2 - (rx2*ry)
      // Step 5, store computed rx2*y
-     py                                 <= (alu_mult_y[((BITS_RES-1)*3-1):0]) << 1 ; // store py = (ry * rx2) * 2
+     //py                                 <= (alu_mult_y[((BITS_RES-1)*3-1):0]) << 1 ; // store py = (ry * rx2) * 2
+     py                                 <= (alu_mult_y[((BITS_RAD)*3-1):0]) << 1 ; // store py = (ry * rx2) * 2
 
      sub_function                       <= sub_function + 1'd1  ; // advance the sub_funcion to the next step
     end

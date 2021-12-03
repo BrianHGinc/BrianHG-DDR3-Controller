@@ -8,7 +8,9 @@
 // Switch  0 = Enable/disable random ellipse drawing engine.
 // Switch  1 = N/A. (*** Used in the separate screen scroll module ***)
 //
-// Version 0.5, June 25, 2021.
+// Version 1.5, October 25, 2021.
+// Added an additional D-Reg FF to the output of the command FIFO to improve FMAX.
+//
 //
 // Written by Brian Guralnick.
 // For public use.
@@ -32,9 +34,9 @@ input  logic signed [15:0]                 DISP_bitmap_height ,         // The b
 
 input                                      write_busy_in      ,         // DDR3 ram read channel #1 was selected for reading the video ram.
 output        logic                        write_req_out      ,
-output              [PORT_ADDR_SIZE-1:0]   write_adr_out      ,
-output              [31:0]                 write_data_out     ,
-output              [3:0]                  write_mask_out     ,
+output logic        [PORT_ADDR_SIZE-1:0]   write_adr_out      ,
+output logic        [31:0]                 write_data_out     ,
+output logic        [3:0]                  write_mask_out     ,
 
 input               [1:0]                  buttons            ,        // 2 buttons on deca board.
 input               [1:0]                  switches           ,        // 2 switches on deca board.
@@ -60,6 +62,9 @@ assign rnd_out = rnd_num ;
 logic [7:0]  prog_pc = 0 ;
 logic [31:0] counter = 0 ;
 
+logic [PORT_ADDR_SIZE-1:0] write_adr_out_i ;
+logic [31:0]               write_data_out_i ;
+
 assign write_mask_out = 4'b1111 ; // Always write enable all bits.
 
 
@@ -78,18 +83,18 @@ logic read_req_cache,write_req_cache,pixel_cache_busy,pixel_cache_empty,pixel_ca
                 .almost_full  ( pixel_cache_busy               ),
                 .empty        ( pixel_cache_empty              ),
                 .full         ( pixel_cache_full               ),
-                .q            ( {write_adr_out,write_data_out} ),
+                .q            ( {write_adr_out_i,write_data_out_i} ),
                 .aclr         ( reset                          ),
                 .almost_empty (),.eccstatus (),.sclr (),.usedw ());
     defparam
         write_pixel_cache.add_ram_output_register = "ON",
-        write_pixel_cache.almost_full_value = 1000,
+        write_pixel_cache.almost_full_value = 48,
         write_pixel_cache.intended_device_family = "MAX 10",
-        write_pixel_cache.lpm_numwords = 1024,
+        write_pixel_cache.lpm_numwords = 64,
         write_pixel_cache.lpm_showahead = "ON",//"OFF",
         write_pixel_cache.lpm_type = "scfifo",
         write_pixel_cache.lpm_width = (PORT_ADDR_SIZE+PIXEL_WIDTH),
-        write_pixel_cache.lpm_widthu = 10,
+        write_pixel_cache.lpm_widthu = 6,
         write_pixel_cache.overflow_checking = "ON",
         write_pixel_cache.underflow_checking = "ON",
         write_pixel_cache.use_eab = "ON";
@@ -97,23 +102,34 @@ logic read_req_cache,write_req_cache,pixel_cache_busy,pixel_cache_empty,pixel_ca
 // **********************************************************************************
 // Manage pixel write cache FIFO to DDR3 write port out.
 // **********************************************************************************
-always_comb read_req_cache = (!pixel_cache_empty && !write_busy_in) ;
-always_comb write_req_out  = (!pixel_cache_empty && !write_busy_in) ;
-/*
-always_ff @(posedge CMD_CLK) begin 
-if (reset) begin
-        read_req_cache <= 0;
-        write_req_out  <= 0;
-end else begin
+// assign read_req_cache = (!pixel_cache_empty && !write_busy_in) ;
+// assign write_req_out  = (!pixel_cache_empty && !write_busy_in) ;
+// assign write_adr_out  = write_adr_out_i  ;
+// assign write_data_out = write_data_out_i ;
 
-        if (!pixel_cache_empty && !write_busy_in) read_req_cache <= 1              ; // Read fifo if FIFO has contents & the DDR3 port is ready.
-        else                                      read_req_cache <= 0              ; // Do not read FIFO.
-                                                  write_req_out  <= read_req_cache ; // Only send the write after the read has been sent to the FIFO so the FIFO's output is valid.
+logic  fifo_reg = 0 ;
+assign read_req_cache = (!pixel_cache_empty && (!write_busy_in || !fifo_reg) ) ;
+assign write_req_out  = fifo_reg && !write_busy_in ;
+
+always_ff @(posedge CMD_CLK) begin 
+    
+    if (reset) begin
+            fifo_reg       <= 0 ;
+    end else begin
+
+        if (read_req_cache) begin
+                                                  fifo_reg       <= 1 ;
+                                                  write_adr_out  <= write_adr_out_i  ;
+                                                  write_data_out <= write_data_out_i ;
+        end else begin
+                              if (write_req_out)  fifo_reg       <= 0 ;
+        end
+
 
   end // !reset
 end // always
 // **********************************************************************************
-*/
+
 
 logic               [31:0] color=0,xycol1=0,xycol2=0,xycol3=0;
 logic                      xyr1=0,xyr2=0,xyr3=0,pixel_in_pipe,sel_draw=0,draw_ena=0,rnd_sel=0;
@@ -147,6 +163,7 @@ localparam                     elli_fill_ratio  = 5 ; // Number of non-filled el
 
 ellipse_generator #(
 .BITS_RES         (elli_bits         ),  // Coordinates IO port bits. 12 = -2048 to +2047
+.BITS_RAD         (9                 ),  // Shrink the maximum possible radius to help FMAX.
 .USE_ALTERA_IP    (1                 )   // Selects if Altera's LPM_MULT should be used VS a normal system verilog 'y <= a * b'
 ) elli_gen (                         
 .clk              ( CMD_CLK          ),  // 125 MHz pixel clock
@@ -173,7 +190,7 @@ ellipse_generator #(
 // **********************************************************************************
 // cleanly latch buttons & switches inputs.
 // **********************************************************************************
-always_ff @(posedge CLK_IN) begin 
+always_ff @(posedge CMD_CLK) begin 
 buttons_l  <= buttons  ;
 switches_l <= switches ;
 end
