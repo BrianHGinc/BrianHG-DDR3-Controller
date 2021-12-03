@@ -12,9 +12,10 @@ Note that the original v1.0 source files still exist, still function, and are ba
 
 In-depth instructions are located in the full v1.0 text release notes as well as all the parameters and ports are well documented within the source code and examples.
 
-These are the new main source file which operate according to the simplified block diagram:
-
 Written by Brian Guralnick. For public use. Leave questions in the https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
+
+-------------------------------------------------------------------------------------------
+These are the new main source file which operate according to the simplified block diagram:
 
 New Version 1.5 source files:
 --------------------------
@@ -75,7 +76,7 @@ Version 1.5 test-bench, complete ram controller system:
 
 Minor issues to fix / things to do for upcoming releases.
 ---------------------------------------------------------
-1. For the 1080p output, remove the DECAs example video sync generator and writ my own proper one which will allow a few real-time video mode selection.
+1. For the 1080p output, remove the DECAs example video sync generator and write my own proper one which will allow a few real-time video mode selection.
 2. Fix a bug with my raster generator which currently only functions properly in 1080p 32bit color, offering proper support for 1/2/4/8/16/32bit color modes.
 3. Shrink the video line buffer to the minimal M9K block size allowed with a 128bit memory buss interface.
 4. Add a palette support for lower depth video modes.
