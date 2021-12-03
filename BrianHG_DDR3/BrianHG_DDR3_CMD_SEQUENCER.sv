@@ -3,7 +3,8 @@
 // ************************************************************************************************************************************************
 //
 // BrianHG_DDR3_CMD_SEQUENCER DDR3 sequencer.
-// Version 1.00, August 21, 2021.
+// Version 1.50, November 28, 2021.
+//               Added *preserve* and duplicate logic to minimize fanouts to help FMAX.
 //
 // Written by Brian Guralnick.
 // For public use.
@@ -84,28 +85,45 @@ output logic                         READ_CAL_PAT_t   ,  // Toggles after every 
 output logic                         READ_CAL_PAT_v  );  // Valid read cal pattern detected in read.
 
 // Multistage pipeline registers, deliberately laid out by name for visual purposes.
-logic                         S1_WENA      =0, S2_WENA      =0, S3_WENA      =0 ;
-logic [DDR3_WIDTH_BANK-1:0]   S1_BANK      =0, S2_BANK      =0, S3_BANK      =0 ;
-logic [DDR3_WIDTH_ROW-1:0]    S1_RAS       =0, S2_RAS       =0, S3_RAS       =0 ;
-logic [DDR3_WIDTH_CAS-1:0]    S1_CAS       =0, S2_CAS       =0, S3_CAS       =0 ;
-logic [DDR3_RWDQ_BITS-1:0]    S1_WDATA     =0, S2_WDATA     =0, S3_WDATA     =0 ;
-logic [DDR3_RWDQ_BITS/8-1:0]  S1_WMASK     =0, S2_WMASK     =0, S3_WMASK     =0 ;
-logic                         S1_REF_REQ   =0, S2_REF_REQ   =0, S3_REF_REQ   =0 ;
+logic                         S1_WENA      =0 ;
+logic [DDR3_WIDTH_BANK-1:0]   S1_BANK      =0 ;
+logic [DDR3_WIDTH_ROW-1:0]    S1_RAS       =0 ;
+logic [DDR3_WIDTH_CAS-1:0]    S1_CAS       =0 ;
+logic [DDR3_RWDQ_BITS-1:0]    S1_WDATA     =0 ;
+logic [DDR3_RWDQ_BITS/8-1:0]  S1_WMASK     =0 ;
+logic                         S1_REF_REQ   =0 ;
+
+logic                         S2_WENA      =0 ;
+logic [DDR3_WIDTH_BANK-1:0]   S2_BANK      =0 ;
+logic [DDR3_WIDTH_ROW-1:0]    S2_RAS       =0 ;
+logic [DDR3_WIDTH_CAS-1:0]    S2_CAS       =0 ;
+logic [DDR3_RWDQ_BITS-1:0]    S2_WDATA     =0 ;
+logic [DDR3_RWDQ_BITS/8-1:0]  S2_WMASK     =0 ;
+logic                         S2_REF_REQ   =0 ;
+
+logic                         S3_WENA      =0 ;
+logic [DDR3_WIDTH_BANK-1:0]   S3_BANK      =0 ;
+logic [DDR3_WIDTH_ROW-1:0]    S3_RAS       =0 ;
+logic [DDR3_WIDTH_CAS-1:0]    S3_CAS       =0 ;
+logic [DDR3_RWDQ_BITS-1:0]    S3_WDATA     =0 ;
+logic [DDR3_RWDQ_BITS/8-1:0]  S3_WMASK     =0 ;
+logic                         S3_REF_REQ   =0 ;
+
 
 logic                         S1_ready     =0, S2_ready     =0, S3_ready     =0, S4_ready     =0;
 logic                         S1_ack       =0, S2_ack       =0, S3_ack       =0, S4_ack       =0;
 logic                         S1_load      =0, S2_load      =0, S3_load      =0, S4_load      =0;
 logic                         S1_busy      =0, S4_busy      =0;
-logic [DDR3_WIDTH_ROW-1:0]    bank_row_mem [0:(2**DDR3_WIDTH_BANK-1)] = '{default:'0} ; // A register of each bank's previously accessed row,
-logic [15:0]                  bank_mem_in_compare=0, row_in_compare=0 ;
+(*preserve*) logic [DDR3_WIDTH_ROW-1:0]    bank_row_mem [0:(2**DDR3_WIDTH_BANK-1)] = '{default:'0} ; // A register of each bank's previously accessed row,
+(*preserve*) logic [15:0]                  bank_mem_in_compare=0, row_in_compare=0 ;
 //logic [3:0]                   S2_BANK_MATCH=0;
-logic                         S3_BANK_MATCH=0;
+(*preserve*) logic                         S3_BANK_MATCH=0;
 
 logic                         phold        =0;
 
-logic [2**DDR3_WIDTH_BANK-1:0] BANK_ACT     = 0 ; // True when a bank's row has been activated.  When set, a PRECHARGE
-                                                  // is required before a new ACTIVATE command is requested on the same bank.
-logic                          BANK_ACT_ANY = 0 ; // This flag is cleared during a precharge all, and set during an activate command.
+(*preserve*) logic [2**DDR3_WIDTH_BANK-1:0] BANK_ACT     = 0 ; // True when a bank's row has been activated.  When set, a PRECHARGE
+                                                               // is required before a new ACTIVATE command is requested on the same bank.
+(*preserve*) logic                          BANK_ACT_ANY = 0 ; // This flag is cleared during a precharge all, and set during an activate command.
 
 logic  [5:0]               idle_counter =0 ; // Timer for 
 logic                      idle_reset   =0 ;

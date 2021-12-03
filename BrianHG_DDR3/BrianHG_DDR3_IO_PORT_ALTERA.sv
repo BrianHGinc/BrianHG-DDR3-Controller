@@ -2,7 +2,8 @@
 //
 // BrianHG_DDR3_IO_PORT_ALTERA.sv DDR Port
 //
-// Version 1.00, August 22, 2021
+// Version 1.50, November 28, 2021.
+//               Added *preserve* and duplicate logic to minimize fanouts to help FMAX.
 // Optimized the RDQ_SYNC_CHAIN, WDQ_SYNC_CHAIN and new CMD_ADD_DLY for the best FMAX upwards of 450MHz.
 //
 //
@@ -68,7 +69,7 @@ parameter bit        CMD_ADD_DLY             = 0,                // ************
 parameter int        RDQ_SYNC_CHAIN          = CMD_ADD_DLY,      // ****************** Use 0 to minimize Logic Cell / LUT count. ***************************
                                                                  // Adds # of FIFO logic cell steps in the DDR input to help increase FMAX for the DDR_CLK_RDQ domain and crossing to the DDR_CK domain.
 
-parameter int        WDQ_SYNC_CHAIN          = 4 + CMD_ADD_DLY - WDQ_CLK_270 + ((CLK_KHZ_IN*CLK_IN_MULT/CLK_IN_DIV)>=450000),  
+parameter int        WDQ_SYNC_CHAIN          = 3 + CMD_ADD_DLY - WDQ_CLK_270 ;// + ((CLK_KHZ_IN*CLK_IN_MULT/CLK_IN_DIV)>=450000),  
                                                                  // MAXIMUM & Optimum = 4 + CMD_ADD_DLY - WDQ_CLK_270 + ((CLK_KHZ_IN*CLK_IN_MULT/CLK_IN_DIV)>=450000),
                                                                  // Shifts the position of the clock transition from DDR_CLK to DDR_CLK_WDQ of the write data FIFO path to the DQ pins.
 
@@ -101,7 +102,7 @@ input        [DDR3_RWDQ_BITS/8-1:0]  WMASK,               // Write data mask.
 
 // *** Read DDR3 data
 output logic                         RDATA_toggle    = 0, // Read data toggle increment.
-output logic                         RDATA_store     = 0, // Read data status, 1=good, 0=error.
+(*preserve*) output logic            RDATA_store     = 0, // Read data status, 1=good, 0=error.
 output logic [DDR3_RWDQ_BITS-1:0]    RDATA           = 0, // Read data return.
 
 // *** DDR3 IO Pins
@@ -168,10 +169,10 @@ localparam bit [DQM_WIDTH-1:0] M = {DQM_WIDTH{1'b1}};
 // The (*preserve*) prevents Quartus from upgrading these registers to 'alt-shift-taps' or 'alt-syncram' core memory which are too slow for 300MHz. 
 // These registers must remain in logic, not to be automatically moved to core memory blocks.
 
-             logic      [DQ_WIDTH-1:0]  WDATA_PIPE_h     [0:15]             ; // Allocate enough registers for the write data pipe, unused registers will
-             logic      [DQM_WIDTH-1:0] WMASK_PIPE_h     [0:15]             ; // be automatically pruned by the compiler.
-             logic      [DQ_WIDTH-1:0]  WDATA_PIPE_l     [0:15]             ; // Allocate enough registers for the write data pipe, unused registers will
-             logic      [DQM_WIDTH-1:0] WMASK_PIPE_l     [0:15]             ; // be automatically pruned by the compiler.
+(*preserve*) logic      [DQ_WIDTH-1:0]  WDATA_PIPE_h     [0:15]             ; // Allocate enough registers for the write data pipe, unused registers will
+(*preserve*) logic      [DQM_WIDTH-1:0] WMASK_PIPE_h     [0:15]             ; // be automatically pruned by the compiler.
+(*preserve*) logic      [DQ_WIDTH-1:0]  WDATA_PIPE_l     [0:15]             ; // Allocate enough registers for the write data pipe, unused registers will
+(*preserve*) logic      [DQM_WIDTH-1:0] WMASK_PIPE_l     [0:15]             ; // be automatically pruned by the compiler.
 (*preserve*) logic      [DQ_WIDTH-1:0]  PIN_WDATA_PIPE_h [0:WDQ_SYNC_CHAIN] ; // Intermediate shift regs for clock domain boundary crossing.
 (*preserve*) logic      [DQM_WIDTH-1:0] PIN_WMASK_PIPE_h [0:WDQ_SYNC_CHAIN] ; // Intermediate shift regs for clock domain boundary crossing.
 (*preserve*) logic      [DQ_WIDTH-1:0]  PIN_WDATA_PIPE_l [0:WDQ_SYNC_CHAIN] ; // Intermediate shift regs for clock domain boundary crossing.
@@ -493,11 +494,12 @@ end // always
 logic        RD_WINDOW;
 always_comb  RD_WINDOW = RDATA_window[RD_POS+RDQ_SYNC_CHAIN+3+CMD_ADD_DLY]; // The extra '+3' counts for the extra latching of input to the 'RDQ_CACHE_x[0]'
 
-logic        RDATA_toggle_int   =0,RDATA_toggle_int2  =0;
+(*preserve*) logic RDATA_toggle_int   =0;//,RDATA_toggle_int2  =0;
 (*preserve*) logic RDATA_toggle_int_a1=0,RDATA_toggle_int_a2=0;
 (*preserve*) logic                       RDATA_toggle_int_b2=0;
 (*preserve*) logic RDATA_toggle_int_c1=0,RDATA_toggle_sint  =0;
-logic [DDR3_RWDQ_BITS-1:0] RDATA_int=0;
+(*preserve*) logic [DDR3_RWDQ_BITS-1:0]  RDATA_int          =0;
+(*preserve*) logic [7:0]                 RDATA_store_b      =8'b00000000;
 
 always_comb  RDQ_rtoggle_detect = ( RDQ_rtoggle_prev2 != RDQ_rtoggle_prev );
 
@@ -521,25 +523,31 @@ always_ff @(posedge DDR_CLK_RDQ) begin
 
     if (!(RDQS_CACHE_h[RDQ_SYNC_CHAIN]==0 && RDQS_CACHE_l[RDQ_SYNC_CHAIN]==1)) begin      // No valid read data DQS signal pattern, so keep the RDATA_store & RDQ_POS in reset state.
              RDATA_store   <= 0 ;                                                         // Reset due to preamble
+             RDATA_store_b <= 8'b00000000 ;                                               // Reset due to preamble
              RDQ_POS       <= 1 ;                                                         // Reset due to preamble
     end else if ( RD_WINDOW ) begin                                                       // Only generate a single RDATA_store copy read data strobe when an unbroken
                                                                                           // 4 count DQS clock pattern is continuously running inside the read window.
                                                 RDQ_POS       <= RDQ_POS + 1'b1 ;
-                                if (RDQ_POS==3) RDATA_store   <= 1'b1 ;
-                                else            RDATA_store   <= 1'b0 ;
+                                if (RDQ_POS==3) RDATA_store   <= 1'b1 ;                   // Help FMAX further down the line by making
+                                else            RDATA_store   <= 1'b0 ;                   // Multiple RDATA_stores to minimize fanout with dedicated register copies.
+                                if (RDQ_POS==3) RDATA_store_b <= 8'b11111111 ;
+                                else            RDATA_store_b <= 8'b00000000 ;
     end else begin
              RDATA_store   <= 0 ;                                                         // No more active read window, force end the read stat.                                                         // No more active read window, force end the read stat.
+             RDATA_store_b <= 8'b00000000 ;                                               // No more active read window, force end the read stat.                                                         // No more active read window, force end the read stat.
              RDQ_POS       <= 1 ;                                                         // Make sure a false broken read must run for 4 good clocks at the beginning of the next read window.
              end
 
-    if ( RDATA_store ) begin               // When a RDATA_store is received, copy the RDQ_CACHE fifo into the RDATAt output and toggle the RDQ_toggle status flag.
-        for (int i=0;i<4;i++)   begin
-                                RDATA_int[ ((i)*2+0)*DQ_WIDTH  +: DQ_WIDTH  ] <= RDQ_CACHE_h[i+RDQ_SYNC_CHAIN] ; // Big Endian BL8 burst
-                                RDATA_int[ ((i)*2+1)*DQ_WIDTH  +: DQ_WIDTH  ] <= RDQ_CACHE_l[i+RDQ_SYNC_CHAIN] ;
+        // When a RDATA_store is received, copy the RDQ_CACHE fifo into the RDATAt output and toggle the RDQ_toggle status flag.
+        for (int i=0;i<4;i+=1)  begin
+                                if ( RDATA_store_b[i*2+0] ) RDATA_int[ ((i)*2+0)*DQ_WIDTH  +: DQ_WIDTH  ] <= RDQ_CACHE_h[i+RDQ_SYNC_CHAIN] ; // Big Endian BL8 burst
+                                if ( RDATA_store_b[i*2+1] ) RDATA_int[ ((i)*2+1)*DQ_WIDTH  +: DQ_WIDTH  ] <= RDQ_CACHE_l[i+RDQ_SYNC_CHAIN] ;
                                 end
-                                RDATA_toggle_int  <= !RDATA_toggle_int  ;
-    end
-                                RDATA_toggle_int2 <= RDATA_toggle_int   ; // Shift delay the RDATA_toggle data valid output so that all paths of RDATA itself is guaranteed
+
+                                if ( RDATA_store )      RDATA_toggle_int  <= !RDATA_toggle_int  ;
+                                                      //RDATA_toggle_int2 <= RDATA_toggle_int   ; // Shift delay the RDATA_toggle data valid output so that all paths of RDATA itself is guaranteed
+
+
 end // Always
 
 
@@ -553,7 +561,7 @@ end // Always
         
         // Here we are manually splitting up the data latch enables into 2 banks across entire data buss to help FMAX.  It's really tough to achieve a reliable 400MHz FMAX on slow Cyclone devices.
         
-            RDATA_toggle_sint    <= RDATA_toggle_int2   ;
+            RDATA_toggle_sint    <= RDATA_toggle_int   ;
         
             RDATA_toggle_int_a1  <= RDATA_toggle_sint    ; // Remember, the DDR_CLK_RDQ data has a random relative shift compared to the DDR_CLK clock domain depending on tuning calibration,
             RDATA_toggle_int_a2  <= (RDATA_toggle_int_a1 != RDATA_toggle_sint) ; // Wait 1 additional clock before transferring the entire BL8 chunk.

@@ -2,7 +2,8 @@
 // *********************************************************************
 //
 // BrianHG_DDR3_PHY_SEQ.sv DDR3-PHY and sequencer.
-// Version 1.00, August 22, 2021. (Half rate timer version)
+// Version 1.50, November 28, 2021.  (Half-rate timer version)
+//               Added *preserve* and duplicate logic to minimize fanouts to help FMAX.
 //
 // Written by Brian Guralnick.
 // For public use.
@@ -200,17 +201,17 @@ logic                        CKE          = 0 ;     // DDR3 CKE
 logic                        CKE_int      = 0 ;     // DDR3 CKE
 logic                        CKE_int2     = 0 ;     // DDR3 CKE
 
-(*preserve*) logic                        CS_n    = 1 ;     // DDR3 CS#
-(*preserve*) logic                        RAS_n   = 1 ;     // DDR3 RAS#
-(*preserve*) logic                        CAS_n   = 1 ;     // DDR3 CAS#
-(*preserve*) logic                        WE_n    = 1 ;     // DDR3 WE#
-(*preserve*) logic                        ODT     = 0 ;
-(*preserve*) logic [DDR3_WIDTH_ADDR-1:0]  A       = 0 ;     // DDR3 multiplexed address input bus
-(*preserve*) logic [DDR3_WIDTH_BANK-1:0]  BA      = 0 ;     // DDR3 Bank select
-(*preserve*) logic                        WRITE   = 0 ;     // Helps improve FMAX when being sent to DDR3_PHY.
-(*preserve*) logic                        READ    = 0 ;     // Helps improve FMAX when being sent to DDR3_PHY.
-(*preserve*) logic [DDR3_RWDQ_BITS-1:0]   WDQ     = 0 ;
-(*preserve*) logic [DDR3_RWDQ_BITS/8-1:0] WDQM    = 0 ;
+logic                        CS_n    = 1 ;     // DDR3 CS#
+logic                        RAS_n   = 1 ;     // DDR3 RAS#
+logic                        CAS_n   = 1 ;     // DDR3 CAS#
+logic                        WE_n    = 1 ;     // DDR3 WE#
+logic                        ODT     = 0 ;
+logic [DDR3_WIDTH_ADDR-1:0]  A       = 0 ;     // DDR3 multiplexed address input bus
+logic [DDR3_WIDTH_BANK-1:0]  BA      = 0 ;     // DDR3 Bank select
+logic                        WRITE   = 0 ;     // Helps improve FMAX when being sent to DDR3_PHY.
+logic                        READ    = 0 ;     // Helps improve FMAX when being sent to DDR3_PHY.
+logic [DDR3_RWDQ_BITS-1:0]   WDQ     = 0 ;
+logic [DDR3_RWDQ_BITS/8-1:0] WDQM    = 0 ;
 
 logic           DDR3_dll_disable     = 0 ;
 logic           DDR3_dll_reset       = 0 ;
@@ -317,7 +318,7 @@ endgenerate
 // ******************************************************************************************************************************************
 BrianHG_DDR3_GEN_tCK #(
 // *****************  DDR3 ram chip configuration settings
-    .DDR3_CK_MHZ      (DDR3_CK_MHZ     ),  .DDR3_SPEED_GRADE (DDR3_SPEED_GRADE),  .DDR3_SIZE_GB     (DDR3_SIZE_GB    ),  .DDR3_WIDTH_DQ    (DDR3_WIDTH_DQ   ),
+    .DDR3_CK_MHZ       (DDR3_CK_MHZ      ),  .DDR3_SPEED_GRADE (DDR3_SPEED_GRADE),  .DDR3_SIZE_GB     (DDR3_SIZE_GB    ),  .DDR3_WIDTH_DQ    (DDR3_WIDTH_DQ   ),
     .DDR3_ODT_RTT     (DDR3_ODT_RTT    ),  .DDR3_RZQ         (DDR3_RZQ        ),  .DDR3_TEMP        (DDR3_TEMP       )
 ) BHG_DDR3_GEN_tCK (
 // *** Dynamic switch inputs.

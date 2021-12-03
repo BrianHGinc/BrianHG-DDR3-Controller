@@ -1,0 +1,493 @@
+Log file requested in 'DDR3_CONTROLLER_v15_top_script.txt' at line#  34.
+
+Line#  35, Sending a reset to the BrianHG_DDR3_PHY_SEQ module.
+Line#  39, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  40, Write on port  0 at address (00000001) with data (00000000000000000000000000000001).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  41, Write on port  0 at address (00000002) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  42, Write on port  0 at address (00000003) with data (00000000000000000000000000000003).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  43, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  44, Write on port  0 at address (00000005) with data (00000000000000000000000000000005).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  45, Write on port  0 at address (00000006) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  46, Write on port  0 at address (00000007) with data (00000000000000000000000000000007).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  47, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  48, Write on port  0 at address (00000009) with data (00000000000000000000000000000009).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  49, Write on port  0 at address (0000000a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  50, Write on port  0 at address (0000000b) with data (0000000000000000000000000000000b).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  51, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  52, Write on port  0 at address (0000000d) with data (0000000000000000000000000000000d).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  53, Write on port  0 at address (0000000e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  54, Write on port  0 at address (0000000f) with data (0000000000000000000000000000000f).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  55, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  56, Write on port  0 at address (00000011) with data (00000000000000000000000000000001).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  57, Write on port  0 at address (00000012) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  58, Write on port  0 at address (00000013) with data (00000000000000000000000000000003).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  59, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  60, Write on port  0 at address (00000015) with data (00000000000000000000000000000005).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  61, Write on port  0 at address (00000016) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  62, Write on port  0 at address (00000017) with data (00000000000000000000000000000007).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  63, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  64, Write on port  0 at address (00000019) with data (00000000000000000000000000000009).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  65, Write on port  0 at address (0000001a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  66, Write on port  0 at address (0000001b) with data (0000000000000000000000000000000b).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  67, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  68, Write on port  0 at address (0000001d) with data (0000000000000000000000000000000d).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  69, Write on port  0 at address (0000001e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  70, Write on port  0 at address (0000001f) with data (0000000000000000000000000000000f).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  71, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  72, Write on port  0 at address (00000001) with data (00000000000000000000000000000001).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  73, Write on port  0 at address (00000002) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  74, Write on port  0 at address (00000003) with data (00000000000000000000000000000003).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  75, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  76, Write on port  0 at address (00000005) with data (00000000000000000000000000000005).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  77, Write on port  0 at address (00000006) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  78, Write on port  0 at address (00000007) with data (00000000000000000000000000000007).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  79, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  80, Write on port  0 at address (00000009) with data (00000000000000000000000000000009).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  81, Write on port  0 at address (0000000a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  82, Write on port  0 at address (0000000b) with data (0000000000000000000000000000000b).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  83, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  84, Write on port  0 at address (0000000d) with data (0000000000000000000000000000000d).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  85, Write on port  0 at address (0000000e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  86, Write on port  0 at address (0000000f) with data (0000000000000000000000000000000f).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  87, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  88, Write on port  0 at address (00000011) with data (00000000000000000000000000000001).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  89, Write on port  0 at address (00000012) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  90, Write on port  0 at address (00000013) with data (00000000000000000000000000000003).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  91, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  92, Write on port  0 at address (00000015) with data (00000000000000000000000000000005).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  93, Write on port  0 at address (00000016) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  94, Write on port  0 at address (00000017) with data (00000000000000000000000000000007).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  95, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  96, Write on port  0 at address (00000019) with data (00000000000000000000000000000009).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  97, Write on port  0 at address (0000001a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  98, Write on port  0 at address (0000001b) with data (0000000000000000000000000000000b).
+                                         MASK -> (00000000000000001111111111111111).
+Line#  99, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 100, Write on port  0 at address (0000001d) with data (0000000000000000000000000000000d).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 101, Write on port  0 at address (0000001e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 102, Write on port  0 at address (0000001f) with data (0000000000000000000000000000000f).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 105, Delaying for  100 nanoseconds.
+Line# 107, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 108, Write on port  0 at address (00000002) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 109, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 110, Write on port  0 at address (00000006) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 111, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 112, Write on port  0 at address (0000000a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 113, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 114, Write on port  0 at address (0000000e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 115, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 116, Write on port  0 at address (00000012) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 117, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 118, Write on port  0 at address (00000016) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 119, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 120, Write on port  0 at address (0000001a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 121, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 122, Write on port  0 at address (0000001e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 123, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 124, Write on port  0 at address (00000002) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 125, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 126, Write on port  0 at address (00000006) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 127, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 128, Write on port  0 at address (0000000a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 129, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 130, Write on port  0 at address (0000000e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 131, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 132, Write on port  0 at address (00000012) with data (00000000000000000000000000000002).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 133, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 134, Write on port  0 at address (00000016) with data (00000000000000000000000000000006).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 135, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 136, Write on port  0 at address (0000001a) with data (0000000000000000000000000000000a).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 137, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 138, Write on port  0 at address (0000001e) with data (0000000000000000000000000000000e).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 141, Delaying for  100 nanoseconds.
+Line# 143, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 144, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 145, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 146, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 147, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 148, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 149, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 150, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 151, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 152, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 153, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 154, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 155, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 156, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 157, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 158, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 159, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 160, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 161, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 162, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 163, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 164, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 165, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 166, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 167, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 168, Write on port  0 at address (00000004) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 169, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 170, Write on port  0 at address (0000000c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 171, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 172, Write on port  0 at address (00000014) with data (00000000000000000000000000000004).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 173, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 174, Write on port  0 at address (0000001c) with data (0000000000000000000000000000000c).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 177, Delaying for  100 nanoseconds.
+Line# 179, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 180, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 181, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 182, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 183, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 184, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 185, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 186, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 187, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 188, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 189, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 190, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 191, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 192, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 193, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 194, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 195, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 196, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 197, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 198, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 199, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 200, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 201, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 202, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 203, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 204, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 205, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 206, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 207, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 208, Write on port  0 at address (00000008) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 209, Write on port  0 at address (00000010) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 210, Write on port  0 at address (00000018) with data (00000000000000000000000000000008).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 212, Delaying for  100 nanoseconds.
+Line# 214, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 215, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 216, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 217, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 218, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 219, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 220, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 221, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 222, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 223, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 224, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 225, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 226, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 227, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 228, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 229, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 230, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 231, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 232, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 233, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 234, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 235, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 236, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 237, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 238, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 239, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 240, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 241, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 242, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 243, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 244, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 245, Write on port  0 at address (00000010) with data (00000000000000000000000000000010).
+                                         MASK -> (00000000000000001111111111111111).
+Line# 247, Delaying for  200 nanoseconds.
+Line# 249, Write on port  0 at address (00000000) with data (00000000000000000000000000000000).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 250, Write on port  0 at address (00000100) with data (11111111111111111111111111111111).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 251, Write on port  0 at address (00000200) with data (22222222222222222222222222222222).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 252, Write on port  0 at address (00000300) with data (33333333333333333333333333333333).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 253, Write on port  0 at address (00000400) with data (44444444444444444444444444444444).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 254, Write on port  0 at address (00000500) with data (55555555555555555555555555555555).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 255, Write on port  0 at address (00000600) with data (66666666666666666666666666666666).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 256, Write on port  0 at address (00000700) with data (77777777777777777777777777777777).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 257, Write on port  0 at address (00000800) with data (88888888888888888888888888888888).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 258, Write on port  0 at address (00000900) with data (99999999999999999999999999999999).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 259, Write on port  0 at address (00000a00) with data (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 260, Write on port  0 at address (00000b00) with data (bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 261, Write on port  0 at address (00000c00) with data (cccccccccccccccccccccccccccccccc).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 262, Write on port  0 at address (00000d00) with data (dddddddddddddddddddddddddddddddd).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 263, Write on port  0 at address (00000e00) with data (eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 264, Write on port  0 at address (00000f00) with data (ffffffffffffffffffffffffffffffff).
+                                         MASK -> (11111111111111111111111111111111).
+Line# 267, Delaying for  100 nanoseconds.
+Line# 269, Read on port  0 at address (00000000) to vector (00).
+Line# 269, Read on port  0 at address (00000100) to vector (11).
+Line# 269, Read on port  0 at address (00000200) to vector (22).
+Line# 269, Read on port  0 at address (00000300) to vector (33).
+Line# 269, Read on port  0 at address (00000400) to vector (44).
+Line# 269, Read on port  0 at address (00000500) to vector (55).
+Line# 269, Read on port  0 at address (00000600) to vector (66).
+Line# 269, Read on port  0 at address (00000700) to vector (77).
+Line# 269, Read on port  0 at address (00000800) to vector (88).
+Line# 269, Read on port  0 at address (00000900) to vector (99).
+Line# 269, Read on port  0 at address (00000a00) to vector (aa).
+Line# 269, Read on port  0 at address (00000b00) to vector (bb).
+Line# 269, Read on port  0 at address (00000c00) to vector (cc).
+Line# 269, Read on port  0 at address (00000d00) to vector (dd).
+Line# 269, Read on port  0 at address (00000e00) to vector (ee).
+Line# 269, Read on port  0 at address (00000f00) to vector (ff).
+Line# 270, Read on port  0 at address (00000000) to vector (00).
+Line# 270, Read on port  0 at address (00000100) to vector (11).
+Line# 270, Read on port  0 at address (00000200) to vector (22).
+Line# 270, Read on port  0 at address (00000300) to vector (33).
+Line# 270, Read on port  0 at address (00000400) to vector (44).
+Line# 270, Read on port  0 at address (00000500) to vector (55).
+Line# 270, Read on port  0 at address (00000600) to vector (66).
+Line# 270, Read on port  0 at address (00000700) to vector (77).
+Line# 270, Read on port  0 at address (00000800) to vector (88).
+Line# 270, Read on port  0 at address (00000900) to vector (99).
+Line# 270, Read on port  0 at address (00000a00) to vector (aa).
+Line# 270, Read on port  0 at address (00000b00) to vector (bb).
+Line# 270, Read on port  0 at address (00000c00) to vector (cc).
+Line# 270, Read on port  0 at address (00000d00) to vector (dd).
+Line# 270, Read on port  0 at address (00000e00) to vector (ee).
+Line# 270, Read on port  0 at address (00000f00) to vector (ff).
+Line# 271, Read on port  0 at address (00000000) to vector (00).
+Line# 271, Read on port  0 at address (00000100) to vector (11).
+Line# 271, Read on port  0 at address (00000200) to vector (22).
+Line# 271, Read on port  0 at address (00000300) to vector (33).
+Line# 271, Read on port  0 at address (00000400) to vector (44).
+Line# 271, Read on port  0 at address (00000500) to vector (55).
+Line# 271, Read on port  0 at address (00000600) to vector (66).
+Line# 271, Read on port  0 at address (00000700) to vector (77).
+Line# 271, Read on port  0 at address (00000800) to vector (88).
+Line# 271, Read on port  0 at address (00000900) to vector (99).
+Line# 271, Read on port  0 at address (00000a00) to vector (aa).
+Line# 271, Read on port  0 at address (00000b00) to vector (bb).
+Line# 271, Read on port  0 at address (00000c00) to vector (cc).
+Line# 271, Read on port  0 at address (00000d00) to vector (dd).
+Line# 271, Read on port  0 at address (00000e00) to vector (ee).
+Line# 271, Read on port  0 at address (00000f00) to vector (ff).
+Line# 272, Read on port  0 at address (00000000) to vector (00).
+Line# 272, Read on port  0 at address (00000100) to vector (11).
+Line# 272, Read on port  0 at address (00000200) to vector (22).
+Line# 272, Read on port  0 at address (00000300) to vector (33).
+Line# 272, Read on port  0 at address (00000400) to vector (44).
+Line# 272, Read on port  0 at address (00000500) to vector (55).
+Line# 272, Read on port  0 at address (00000600) to vector (66).
+Line# 272, Read on port  0 at address (00000700) to vector (77).
+Line# 272, Read on port  0 at address (00000800) to vector (88).
+Line# 272, Read on port  0 at address (00000900) to vector (99).
+Line# 272, Read on port  0 at address (00000a00) to vector (aa).
+Line# 272, Read on port  0 at address (00000b00) to vector (bb).
+Line# 272, Read on port  0 at address (00000c00) to vector (cc).
+Line# 272, Read on port  0 at address (00000d00) to vector (dd).
+Line# 272, Read on port  0 at address (00000e00) to vector (ee).
+Line# 272, Read on port  0 at address (00000f00) to vector (ff).
+Line# 275, @END command at line number  275.
+
+End of command source ASCII file 'DDR3_CONTROLLER_v15_top_script.txt'.
+ 275 lines processed.
