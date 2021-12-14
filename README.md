@@ -23,7 +23,7 @@ New Version 1.5 source files:
 BrianHG_DDR3_COMMANDER_v15.sv
 - All 16 user multiports are now read and write ports instead of a separate 16 read ports and 16 write ports.
 - Radically improved FMAX where a full 16 ports should achieve at least 150Mhz on a -6 Cyclone III/IV and MAX10.
-- Sadly, Cyclone V-6 should achieve at least 88MHz where it used to be only 75MHz with just 2 ports.
+- Sadly, Cyclone V-6 should achieve at least ~93MHz where it used to be only 75MHz with just 2 ports.
 
 BrianHG_DDR3_CONTROLLER_v15_top.sv
 - Uses the new commander v15.
