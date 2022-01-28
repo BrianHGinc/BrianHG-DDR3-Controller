@@ -120,28 +120,28 @@ Note that the current demo has a reference pixel clock of 148.5MHz.
 // ------------------------------------------------------------------------------------------
 // MN# = Mode xCLK_DIVIDER(-1) Required VID_CLK frequency.
 // ------------------------------------------------------------------------------------------
-// 0   = 480p      x1           27.00 MHz=60p or  54.00 MHz=120p or 108.00 MHz=240p
-// 0   = 480p      x2           54.00 MHz=60p or 108.00 MHz=120p or 216.00 MHz=240p
-// 0   = 480p      x4          108.00 MHz=60p or 216.00 MHz=120p
-// 0   = 480p      x8          216.00 MHz=60p
-// 1   = 720p      x1           74.25 MHz=60p or 148.50 MHz=120p or 297.00 MHz=240p
-// 1   = 720p      x2          148.50 MHz=60p or 297.00 MHz=120p
-// 1   = 720p      x4          297.00 MHz=60p
-// 2   = 1440x960  x1          108.00 MHz=60p or 216.00 MHz=120p
-// 2   = 1440x960  x2          216.00 MHz=60p
-// 3   = 1280x1024 x1          108.00 MHz=60p or 216.00 MHz=120p
-// 3   = 1280x1024 x2          216.00 MHz=60p
-// 4   = 1080p     x1          148.50 MHz=60p or  74.25 MHz=30p
-// 4   = 1080p     x2          297.00 MHz=60p or 148.50 MHz=30p
-// 4   = 1080p     x4        too fast MHz=60p or 297.00 MHz=30p
+// 0   = 480p      x1           27.00 MHz=60Hz or  54.00 MHz=120Hz or 108.00 MHz=240Hz
+// 0   = 480p      x2           54.00 MHz=60Hz or 108.00 MHz=120Hz or 216.00 MHz=240Hz
+// 0   = 480p      x4          108.00 MHz=60Hz or 216.00 MHz=120Hz
+// 0   = 480p      x8          216.00 MHz=60Hz
+// 1   = 720p      x1           74.25 MHz=60Hz or 148.50 MHz=120Hz or 297.00 MHz=240Hz
+// 1   = 720p      x2          148.50 MHz=60Hz or 297.00 MHz=120Hz
+// 1   = 720p      x4          297.00 MHz=60Hz
+// 2   = 1440x960  x1          108.00 MHz=60Hz or 216.00 MHz=120Hz
+// 2   = 1440x960  x2          216.00 MHz=60Hz
+// 3   = 1280x1024 x1          108.00 MHz=60Hz or 216.00 MHz=120Gz
+// 3   = 1280x1024 x2          216.00 MHz=60Hz
+// 4   = 1080p     x1          148.50 MHz=60Hz or  74.25 MHz=30Hz
+// 4   = 1080p     x2          297.00 MHz=60Hz or 148.50 MHz=30Hz
+// 4   = 1080p     x4        too fast MHz=60Hz or 297.00 MHz=30Hz
 // ------------------------------------------------------------------------------------------
 // Special modes / Spare slots...
 // ------------------------------------------------------------------------------------------
 // 5   = 
 // 6   = 
-// 7   = ***480p   x5          148.50 MHz=60p, x4=75Hz, x6=50hz. ***** Special non-standard 480p operating on the 148.5MHz clock.
+// 7   = ***480p   x5          148.50 MHz=60p, x4=75Hz, x6=50Hz. ***** Special non-standard 480p operating on the 148.5MHz clock.
 //                                                               ***** If you want the 'OFFICIAL' standard 480p, then use mode
-//                                                               ***** #0 with a source clock of 27/54/108/216 MHz & properly set divider.
+//                                                               ***** #0 with a source clock of 27/54/108/216 MHz & properly set CLK_DIVIDER.
 //
 //                                                            0     1     2     3     4     5     6     7
 localparam bit [HC_BITS-1:0] VID_h_total        [0:7] = '{  858, 1650, 1716, 1688, 2200,  858,  858,  940} ;
