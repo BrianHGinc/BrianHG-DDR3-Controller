@@ -1,5 +1,27 @@
 # BrianHG-DDR3-Controller
 --------------------------------------
+BrianHG_DDR3_Controller V1.6
+January 28, 2022
+--------------------------------------
+Here is a preview of my new 64 window layer DDR3 VGA graphics system See the 2 page block diagram:
+
+https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_VGA_Window_System.pdf block diagram and:
+
+https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_VGA_Window_System.txt documentation for developers.
+
+
+Features:
+- Up to 64 window layers, with alpha blend transparency from layer-to-layer.
+- In system real-time video mode switching support.
+- 32/16/8/4/2/1 bpp window modes.
+- 32/16/8/4/2/1 bpp tile/text/fonts with 4/8/16/32 X 4/8/16/32 resolution.
+- And a huge set of configurable parameters able to address up to 4gb of DDR3 ram with bitmap sizes of up to 65536x65536 pixels.
+
+A full demo of my new BrianHG_DDR3_CONTROLLER_v16 containing the multi-window VGA system demo should be uploaded in a few days.
+
+
+# BrianHG-DDR3-Controller
+--------------------------------------
 BrianHG_DDR3_Controller V1.5
 December 3, 2021
 --------------------------------------
