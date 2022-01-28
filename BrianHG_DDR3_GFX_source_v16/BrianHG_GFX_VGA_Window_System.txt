@@ -129,7 +129,7 @@ Note that the current demo has a reference pixel clock of 148.5MHz.
 // 1   = 720p      x4          297.00 MHz=60Hz
 // 2   = 1440x960  x1          108.00 MHz=60Hz or 216.00 MHz=120Hz
 // 2   = 1440x960  x2          216.00 MHz=60Hz
-// 3   = 1280x1024 x1          108.00 MHz=60Hz or 216.00 MHz=120Gz
+// 3   = 1280x1024 x1          108.00 MHz=60Hz or 216.00 MHz=120Hz
 // 3   = 1280x1024 x2          216.00 MHz=60Hz
 // 4   = 1080p     x1          148.50 MHz=60Hz or  74.25 MHz=30Hz
 // 4   = 1080p     x2          297.00 MHz=60Hz or 148.50 MHz=30Hz
