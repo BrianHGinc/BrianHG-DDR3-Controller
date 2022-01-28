@@ -19,7 +19,7 @@ Features:
 - Supports up to 1k addressable tiles/characters with 32/16a/16b/8/4/2/1 bpp, with mirror and flip.
 - Each window has a base address, X&Y screen position & H&V sizes up to 65kx65k pixels.
 - Independent bpp depth for each window.
-- Optional independent or shared 256 color 32 RGBA palettes for each window.
+- Optional independent or shared 256 color 32 bit RGBA palettes for each window.
 - In tile mode, each tile/character's output with 8 bpp and below can be individually assigned to different portions of the palette.
 - Multilayer 8 bit alpha stencil translucency between layers with programmable global override.
 - Quick layer swap-able registers.
