@@ -1,6 +1,6 @@
 # BrianHG-DDR3-Controller
 --------------------------------------
-BrianHG_DDR3_Controller V1.6
+BrianHG_DDR3_Controller V1.6 Preview
 January 28, 2022
 --------------------------------------
 Here is a preview of my new 64 window layer DDR3 VGA graphics system See the 2 page block diagram:
