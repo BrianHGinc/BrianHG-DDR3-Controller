@@ -13,9 +13,17 @@ https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_GFX
 Features:
 - Up to 64 window layers, with alpha blend transparency from layer-to-layer.
 - In system real-time video mode switching support.
-- 32/16/8/4/2/1 bpp window modes.
-- 32/16/8/4/2/1 bpp tile/text/fonts with 4/8/16/32 X 4/8/16/32 resolution.
-- And a huge set of configurable parameters able to address up to 4gb of DDR3 ram with bitmap sizes of up to 65536x65536 pixels.
+- A huge set of configurable parameters able to address up to 4gb of DDR3 ram with bitmap sizes of up to 65536x65536 pixels.
+- Supports 32/16a/16b/8/4/2/1 bpp windows.
+- Supports accelerated Fonts/Tiles stored in dedicated M9K blockram with resolutions of 4/8/16/32 X 4/8/16/32 pixels.
+- Supports up to 1k addressable tiles/characters with 32/16a/16b/8/4/2/1 bpp, with mirror and flip.
+- Each window has a base address, X&Y screen position & H&V sizes up to 65kx65k pixels.
+- Independent bpp depth for each window.
+- Optional independent or shared 256 color 32 RGBA palettes for each window.
+- In tile mode, each tile/character's output with 8 bpp and below can be individually assigned to different portions of the palette.
+- Multilayer 8 bit alpha stencil translucency between layers with programmable global override.
+- Quick layer swap-able registers.
+- Hardware individual integer X&Y scaling where each window output can be scaled 1x through 16x.
 
 A full demo of my new BrianHG_DDR3_CONTROLLER_v16 containing the multi-window VGA system demo should be uploaded in a few days.
 
