@@ -1,0 +1,276 @@
+#============================================================
+# Build by Terasic System Builder, Edited by Brian Guralnick.
+#============================================================
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE30F23C6
+set_global_assignment -name TOP_LEVEL_ENTITY "BrianHG_DDR3_CIV_top"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:22:41 OCTOBER 24,2014"
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
+
+#============================================================
+# disable config pin so bank8 can use 1.2V 
+#============================================================
+set_global_assignment -name AUTO_RESTART_CONFIGURATION ON
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+
+#============================================================
+# Test Cyclone IV E  EP4CE30F23C6 IO pin assignments
+# Note that the DDR3_CK was placed on a differential pair
+# and that the 2 DQS were also on a pseudo differential pair
+# matching their DQS# IO bank location with their DQ data pins.
+#============================================================
+set_location_assignment PIN_T2 -to CLK_IN_50
+set_location_assignment PIN_AB9 -to DDR3_DQS_p[0]
+set_location_assignment PIN_AA9 -to DDR3_DQS_n[0]
+set_location_assignment PIN_Y13 -to DDR3_DQS_p[1]
+set_location_assignment PIN_W13 -to DDR3_DQS_n[1]
+set_location_assignment PIN_AB3 -to DDR3_CK_p[0]
+set_location_assignment PIN_AA3 -to DDR3_CK_n[0]
+set_location_assignment PIN_AB5 -to DDR3_DQ[0]
+set_location_assignment PIN_AA5 -to DDR3_DQ[1]
+set_location_assignment PIN_AB7 -to DDR3_DQ[2]
+set_location_assignment PIN_AA7 -to DDR3_DQ[3]
+set_location_assignment PIN_AB8 -to DDR3_DQ[4]
+set_location_assignment PIN_AA8 -to DDR3_DQ[5]
+set_location_assignment PIN_AB10 -to DDR3_DQ[6]
+set_location_assignment PIN_AA10 -to DDR3_DQ[7]
+set_location_assignment PIN_AB13 -to DDR3_DQ[8]
+set_location_assignment PIN_AA13 -to DDR3_DQ[9]
+set_location_assignment PIN_AB14 -to DDR3_DQ[10]
+set_location_assignment PIN_AA14 -to DDR3_DQ[11]
+set_location_assignment PIN_AB15 -to DDR3_DQ[12]
+set_location_assignment PIN_AA15 -to DDR3_DQ[13]
+set_location_assignment PIN_AB16 -to DDR3_DQ[14]
+set_location_assignment PIN_AA16 -to DDR3_DQ[15]
+set_location_assignment PIN_AA4 -to DDR3_DM[0]
+set_location_assignment PIN_AB17 -to DDR3_DM[1]
+set_location_assignment PIN_Y3 -to DDR3_RESET_n
+set_location_assignment PIN_V5 -to DDR3_CKE
+set_location_assignment PIN_Y7 -to DDR3_WE_n
+set_location_assignment PIN_Y6 -to DDR3_RAS_n
+set_location_assignment PIN_Y8 -to DDR3_CS_n
+set_location_assignment PIN_Y10 -to DDR3_CAS_n
+set_location_assignment PIN_W6 -to DDR3_ODT
+set_location_assignment PIN_W7 -to DDR3_BA[0]
+set_location_assignment PIN_W8 -to DDR3_BA[1]
+set_location_assignment PIN_W10 -to DDR3_BA[2]
+set_location_assignment PIN_AB20 -to DDR3_A[0]
+set_location_assignment PIN_AA20 -to DDR3_A[1]
+set_location_assignment PIN_AB19 -to DDR3_A[2]
+set_location_assignment PIN_AA19 -to DDR3_A[3]
+set_location_assignment PIN_AB18 -to DDR3_A[4]
+set_location_assignment PIN_AA17 -to DDR3_A[5]
+set_location_assignment PIN_Y17 -to DDR3_A[6]
+set_location_assignment PIN_W17 -to DDR3_A[7]
+set_location_assignment PIN_W15 -to DDR3_A[8]
+set_location_assignment PIN_V15 -to DDR3_A[9]
+set_location_assignment PIN_V14 -to DDR3_A[10]
+set_location_assignment PIN_V13 -to DDR3_A[11]
+set_location_assignment PIN_U12 -to DDR3_A[12]
+set_location_assignment PIN_U13 -to DDR3_A[13]
+set_location_assignment PIN_U14 -to DDR3_A[14]
+set_location_assignment PIN_H22 -to GPIO0_D[3]
+set_location_assignment PIN_H21 -to GPIO0_D[2]
+set_location_assignment PIN_H20 -to GPIO0_D[1]
+set_location_assignment PIN_H19 -to GPIO0_D[0]
+set_location_assignment PIN_B21 -to KEY[1]
+set_location_assignment PIN_B22 -to KEY[0]
+set_location_assignment PIN_C22 -to LED[7]
+set_location_assignment PIN_C21 -to LED[6]
+set_location_assignment PIN_D22 -to LED[5]
+set_location_assignment PIN_D21 -to LED[4]
+set_location_assignment PIN_E22 -to LED[3]
+set_location_assignment PIN_E21 -to LED[2]
+set_location_assignment PIN_F22 -to LED[1]
+set_location_assignment PIN_F21 -to LED[0]
+set_location_assignment PIN_F20 -to SW[1]
+set_location_assignment PIN_F19 -to SW[0]
+set_location_assignment PIN_M22 -to HDMI_TX_D[23]
+set_location_assignment PIN_M21 -to HDMI_TX_D[22]
+set_location_assignment PIN_M20 -to HDMI_TX_D[21]
+set_location_assignment PIN_M19 -to HDMI_TX_D[20]
+set_location_assignment PIN_N16 -to HDMI_TX_D[19]
+set_location_assignment PIN_N17 -to HDMI_TX_D[18]
+set_location_assignment PIN_N18 -to HDMI_TX_D[17]
+set_location_assignment PIN_N19 -to HDMI_TX_D[16]
+set_location_assignment PIN_N20 -to HDMI_TX_D[15]
+set_location_assignment PIN_N21 -to HDMI_TX_D[14]
+set_location_assignment PIN_N22 -to HDMI_TX_D[13]
+set_location_assignment PIN_P15 -to HDMI_TX_D[12]
+set_location_assignment PIN_P16 -to HDMI_TX_D[11]
+set_location_assignment PIN_P21 -to HDMI_TX_D[10]
+set_location_assignment PIN_P22 -to HDMI_TX_D[9]
+set_location_assignment PIN_R18 -to HDMI_TX_D[8]
+set_location_assignment PIN_R19 -to HDMI_TX_D[7]
+set_location_assignment PIN_R20 -to HDMI_TX_D[6]
+set_location_assignment PIN_R21 -to HDMI_TX_D[5]
+set_location_assignment PIN_R22 -to HDMI_TX_D[4]
+set_location_assignment PIN_T17 -to HDMI_TX_D[3]
+set_location_assignment PIN_T18 -to HDMI_TX_D[2]
+set_location_assignment PIN_U19 -to HDMI_TX_D[1]
+set_location_assignment PIN_U20 -to HDMI_TX_D[0]
+set_location_assignment PIN_U21 -to HDMI_TX_DE
+set_location_assignment PIN_U22 -to HDMI_TX_HS
+set_location_assignment PIN_V21 -to HDMI_TX_INT
+set_location_assignment PIN_V22 -to HDMI_TX_VS
+set_location_assignment PIN_W20 -to HDMI_TX_CLK
+set_location_assignment PIN_W21 -to HDMI_I2C_SCL
+set_location_assignment PIN_W22 -to HDMI_I2C_SDA
+set_location_assignment PIN_M1 -to HDMI_I2S[3]
+set_location_assignment PIN_M2 -to HDMI_I2S[2]
+set_location_assignment PIN_M3 -to HDMI_I2S[1]
+set_location_assignment PIN_M4 -to HDMI_I2S[0]
+set_location_assignment PIN_N1 -to HDMI_LRCLK
+set_location_assignment PIN_N2 -to HDMI_MCLK
+set_location_assignment PIN_P1 -to HDMI_SCLK
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[12]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[6]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[7]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_CAS_n
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_BA[2]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQS_p[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQS_n[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[2]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[3]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[4]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[5]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_CS_n
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_WE_n
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_ODT
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DM[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_CK_p[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_CK_n[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_BA[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_BA[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_RESET_n
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_RAS_n
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_CKE
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[0]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[6]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[7]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DM[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[2]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[3]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[4]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[5]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[8]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[14]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[15]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[9]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[10]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[11]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[13]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_A[14]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQS_p[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQS_n[1]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[8]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[9]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[10]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[11]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[12]
+set_instance_assignment -name IO_STANDARD "1.5-V HSTL CLASS I" -to DDR3_DQ[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_CAS_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_BA[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQS_p[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQS_n[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_CS_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_WE_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_ODT
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DM[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_CK_p[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_CK_n[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_BA[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_BA[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_RESET_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_RAS_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_CKE
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DM[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_A[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQS_p[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQS_n[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DDR3_DQ[13]
+
+
+#============================================================
+# End of Cyclone IV test pin assignments by Brian Guralnick
+#============================================================
+
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 2
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name OPTIMIZATION_MODE BALANCED
+set_global_assignment -name SYSTEMVERILOG_FILE BrianHG_DDR3_CIV_top.sv
+set_global_assignment -name SDC_FILE BrianHG_DDR3_CIV.sdc
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_PLL.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_PHY_SEQ_v16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_CMD_SEQUENCER_v16.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_FIFOs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_IO_PORT_ALTERA.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_GEN_tCK.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/altera_gpio_lite.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_CONTROLLER_v16_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3/BrianHG_DDR3_COMMANDER_v16.sv
+set_global_assignment -name VERILOG_FILE ../BrianHG_DDR3/sync_rs232_uart.v
+set_global_assignment -name VERILOG_FILE ../BrianHG_DDR3/rs232_DEBUGGER.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_Layer_mixer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/ellipse_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_scroll_screen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_Window_DDR3_Reader.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_Video_Line_Buffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_VGA_Window_System.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_Sync_Gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_GFX_PLL_i50_o297.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../BrianHG_DDR3_GFX_source_v16/BrianHG_draw_test_patterns.sv
+set_global_assignment -name VERILOG_FILE I2C_HDMI_Config.v
+set_global_assignment -name VERILOG_FILE I2C_Controller.v
+set_global_assignment -name MIF_FILE ../BrianHG_DDR3_GFX_source_v16/VGA_PALETTE_RGBA32.mif
+set_global_assignment -name MIF_FILE ../BrianHG_DDR3_GFX_source_v16/VGA_FONT_8x16_mono32.mif
+set_global_assignment -name MIF_FILE ../BrianHG_DDR3_GFX_source_v16/LBUF_BLANK.mif
+set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_global_assignment -name PRE_MAPPING_RESYNTHESIS ON
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,0 +1,15 @@
+PLL_Name	BrianHG_DDR3_CONTROLLER_v16_top:DDR3|BrianHG_DDR3_PLL:DDR3_PLL|altpll:DDR3_PLL5|BrianHG_DDR3_PLL_altpll:auto_generated|pll1
+PLLJITTER	41
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	BrianHG_GFX_PLL_i50_o297:VGA_PLL|altpll:VGA_50_54|BrianHG_GFX_PLL_i50_o216_o297_altpll:auto_generated|pll1
+PLLJITTER	31
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	BrianHG_GFX_PLL_i50_o297:VGA_PLL|altpll:VGA_SW_216_297|BrianHG_GFX_PLL_i50_o216_o297_altpll1:auto_generated|pll1
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+
