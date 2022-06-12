@@ -1,0 +1,442 @@
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+BrianHG_GFX_VGA_Window_System.sv / BrianHG_GFX_VGA_Window_System_DDR3_REGS.sv:
+Generate a VGA/HDMI compatible output with up to 64 window layers (DDR3 read speed permitting).
+
+*** For the layer-swapping controls, See 'BrianHG_GFX_VGA_Window_System.pdf' for a block diagram illustration.
+
+BrianHG_GFX_VGA_Window_System.sv Hardware Realtime Multi-Window Video Graphics Adapter
+Version 1.6, January 28, 2022.
+
+Supports multiple windows / layers.
+With SDI-Sequentially interleave display layers to save on FPGA resources at the expense of dividing the output pixel clock.
+and  PDI-Parallel stacked display layers which allow full pixel speed clocks, but uses multiple M9K blocks and multipliers
+for layer mixing.
+
+Written by Brian Guralnick.
+For public use.
+
+See: https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/
+
+
+
+**************************************************************************************************************************
+*** It is highly recommended that the following new BrianHG_DDR3_Controller read channel parameters are set as follows:
+*** PORT_R_CACHE_TOUT_ENA = '{1},
+*** PORT_R_CACHE_TOUT     = '{0},
+*** PORT_R_WDT_ENA        = '{1},
+***
+*** Since it is possible that the VGA system may exceed DDR3 bandwidth on a regular basis due to having too many
+*** windows open at too high a bit depth with too high a pixel clock rate, the above parameters protects the DDR3
+*** read channel from a potential freeze up.  IE: You may see some garble noise on the screen, but it wont seize up the system.
+**************************************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+-Supports 32/16a/16b/8/4/2/1 bpp windows.
+-Supports accelerated Fonts/Tiles stored in dedicated M9K blockram with resolutions of 4/8/16/32 X 4/8/16/32 pixels.
+-Supports up to 1k addressable tiles/characters with 32/16a/16b/8/4/2/1 bpp, with mirror and flip.
+-Each window has a base address, X&Y screen position & H&V sizes up to 65kx65k pixels.
+-Independent bpp depth for each window.
+-Optional independent or shared 256 color 32 bit RGBA palettes for each window.
+-In tile mode, each tile/character's output with 8 bpp and below can be individually assigned to different portions of the palette.
+-Multilayer 8 bit alpha stencil translucency between layers with programmable global override.
+-Quick layer swap-able registers.
+-Hardware individual integer X&Y scaling where each window output can be scaled 1x through 16x.
+
+Source files includes:
+-BrianHG_GFX_Video_Window_System.sv         -> Complete system wired together with direct Window Control Access port.
+-BrianHG_GFX_VGA_Window_System_DDR3_REGS.sv -> Same as the complete Window System, but, all window controls can be accessed through written to DDR3 ram on the BrianHG_DDR3 COM_xxx multi-ports.
+-BrianHG_GFX_Sync_Gen.sv and _tb            -> Generates a programmable video syncs and active picture region.
+-BrianHG_GFX_Video_Line_Buffer.sv and _tb   -> A dual-port video display line buffer which contains the Tile/Font/Palette memory with a line buffer which converts the source DDR3 reads on the CMD_CLK to the output VID_CLK domain.  Supports up to 8 sequential interleaved layers.
+-BrianHG_GFX_Window_DDR3_Reader.sv and _tb  -> Used to send DDR3 read commands to fill the video display line buffer to construct the display.
+-BrianHG_GFX_Window_Layer_Mixer.sv          -> Used to superimpose the windows on top of each other using the Alpha blend to mix the layers.  Supports both 8 sequential and 8 parallel layers.
+-BrianHG_GFX_Window_Collision_Detector.sv   -> *Coming soon* Used in simple 2D gaming to detect active pixel collision between window layers on the display.
+
+New multi-window DECA pcb demo projects: (Requires LVTTL RS232 interface and my RS232 Debugger so you may play with the control registers in real-time.)
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** Understanding DDR3 Bandwidth Limitations
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+Note: This window system has no protection against over-flooding the available DDR3 bandwidth.
+      Exceeding the available DDR3 bandwidth will generate horizontal zipper garbage on the screen.
+******************************************************************************************************
+
+A) Calculating available bandwidth:
+      (DDR3 clock rate in MHz * DDR3 bits * 2)
+
+B) Calculating required display bandwidth for each full screen window:
+      (pixel clock rate * bpp)
+
+C) Calculating required display bandwidth for each full screen tile enabled window:
+      (pixel clock rate * bpp) / (font-tile width)
+
+To determine percentage used of the available bandwidth:
+      (sum of all (B)s and (C)s) / (A).
+
+
+Example: Deca running its 16 bit DDR3 at 400MHz.
+A= 400MHz * 16 * 2 = 12800 mbps.
+
+Running a 480p display (27MHz pixel clock) with 2 x 32bit windows, 1 x 8bit window, and a 16 bit text window with the standard 8x16 vga font.
+
+Window 1   27MHz * 32     = 864mbps.
+Window 2   27MHz * 32     = 864mbps.
+Window 3   27MHz * 8      = 216mbps.
+Window 4   27MHz * 16 / 8 =  54mbps.
+-------------------------------------
+Required bandwidth        = 1998mbps
+
+%usage = 1998mbps / 12800mbps = ~16% of the DDR3 bandwidth.
+It is a good idea to keep this below 70%.
+
+Same setup for 720p, at 75Mhz pixel.  IE: 720p@60hz and 1080p@30Hz.
+
+Window 1   75MHz * 32     = 2400mbps.
+Window 2   75MHz * 32     = 2400mbps.
+Window 3   75MHz * 8      =  600mbps.
+Window 4   75MHz * 16 / 8 =  150mbps.
+-------------------------------------
+Required bandwidth        = 5550mbps
+
+%usage = 5550mbps / 12800mbps = ~44% of the DDR3 bandwidth.
+
+
+**************************************************************************************************************************
+*** It is highly recommended that the following new BrianHG_DDR3_Controller read channel parameters are set as follows:
+*** PORT_R_CACHE_TOUT_ENA = '{1},
+*** PORT_R_CACHE_TOUT     = '{0},
+*** PORT_R_WDT_ENA        = '{1},
+***
+*** Since it is possible that the VGA system may exceed DDR3 bandwidth on a regular basis due to having too many
+*** windows open at too high a bit depth with too high a pixel clock rate, the above parameters protects the DDR3
+*** read channel from a potential freeze up.  IE: You may see some garble noise on the screen, but it wont seize up the system.
+**************************************************************************************************************************
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** Understanding Preset Video modes and what how SDI_LAYERs works.
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+Note that the current demo has a reference pixel clock of 148.5MHz.
+
+// A table of 8 possible video modes (MN#).
+// ------------------------------------------------------------------------------------------
+// Optimized for 2 frequency groups, (27/54/108/216) and (74.25/148.5/297)
+// to achieve all the main 16:9 standards except for 1280x1024.
+// All modes target multiples of the standard 59.94Hz.
+// ------------------------------------------------------------------------------------------
+// MN# = Mode xCLK_DIVIDER(-1) Required VID_CLK frequency.
+// ------------------------------------------------------------------------------------------
+// 0   = 480p      x1           27.00 MHz=60Hz or  54.00 MHz=120Hz or 108.00 MHz=240Hz
+// 0   = 480p      x2           54.00 MHz=60Hz or 108.00 MHz=120Hz or 216.00 MHz=240Hz
+// 0   = 480p      x4          108.00 MHz=60Hz or 216.00 MHz=120Hz
+// 0   = 480p      x8          216.00 MHz=60Hz
+// 1   = 720p      x1           74.25 MHz=60Hz or 148.50 MHz=120Hz or 297.00 MHz=240Hz
+// 1   = 720p      x2          148.50 MHz=60Hz or 297.00 MHz=120Hz
+// 1   = 720p      x4          297.00 MHz=60Hz
+// 2   = 1440x960  x1          108.00 MHz=60Hz or 216.00 MHz=120Hz
+// 2   = 1440x960  x2          216.00 MHz=60Hz
+// 3   = 1280x1024 x1          108.00 MHz=60Hz or 216.00 MHz=120Hz
+// 3   = 1280x1024 x2          216.00 MHz=60Hz
+// 4   = 1080p     x1          148.50 MHz=60Hz or  74.25 MHz=30Hz
+// 4   = 1080p     x2          297.00 MHz=60Hz or 148.50 MHz=30Hz
+// 4   = 1080p     x4        too fast MHz=60Hz or 297.00 MHz=30Hz
+// ------------------------------------------------------------------------------------------
+// Special modes / Spare slots...
+// ------------------------------------------------------------------------------------------
+// 5   = 
+// 6   = 
+// 7   = ***480p   x5          148.50 MHz=60p, x4=75Hz, x6=50Hz. ***** Special non-standard 480p operating on the 148.5MHz clock.
+//                                                               ***** If you want the 'OFFICIAL' standard 480p, then use mode
+//                                                               ***** #0 with a source clock of 27/54/108/216 MHz & properly set CLK_DIVIDER.
+//
+//                                                            0     1     2     3     4     5     6     7
+localparam bit [HC_BITS-1:0] VID_h_total        [0:7] = '{  858, 1650, 1716, 1688, 2200,  858,  858,  940} ;
+localparam bit [HC_BITS-1:0] VID_h_res          [0:7] = '{  720, 1280, 1440, 1280, 1920,  720,  720,  720} ;
+localparam bit [HC_BITS-1:0] VID_hs_front_porch [0:7] = '{   16,  110,   32,   48,   88,   16,   16,   18} ;
+localparam bit [HC_BITS-1:0] VID_hs_size        [0:7] = '{   62,   40,  124,  112,   44,   62,   62,   68} ;
+localparam bit               VID_hs_polarity    [0:7] = '{    1,    0,    1,    0,    0,    1,    1,    1} ;
+localparam bit [VC_BITS-1:0] VID_v_total        [0:7] = '{  525,  750, 1050, 1067, 1125,  525,  525,  527} ;
+localparam bit [VC_BITS-1:0] VID_v_res          [0:7] = '{  480,  720,  960, 1024, 1080,  480,  480,  480} ;
+localparam bit [VC_BITS-1:0] VID_vs_front_porch [0:7] = '{    6,    5,    6,    2,    4,    6,    6,    6} ;
+localparam bit [VC_BITS-1:0] VID_vs_size        [0:7] = '{    6,    5,    6,    3,    5,    6,    6,    6} ;
+localparam bit               VID_vs_polarity    [0:7] = '{    1,    0,    1,    0,    0,    1,    1,    1} ;
+
+
+You can select modes 0 through 7 in real time.
+You can also select the output CLK_DIVIDER in real time, a value from 0 through 7 which will divide the clock from 1x through 8x.
+The current demo system runs on a fixed 148.5MHz clock.  Use the table above to see what modes are possible.
+When compiling the project with the parameter SDI_LAYERS set to 4, this means the with the clock divider set to 4'h3, a divide value of 4, all of the 4 SDI_LAYERS will function.
+But, if you set the divider to 4'h1, divide clock by 2, only the first 2 SDI layers will function, but you now have double the pixel frequency clock rate.
+Same for a setting of 4'h0, divide clock by 1, only 1 SDI_LAYER window will work.
+Decreasing the CLK_DIVIDER will not affect the total available PDI_LAYERS and your total available windows will always be the functional SDI_LAYERS multiplied by the PDI_LAYERS.
+
+*** When decreasing the CLK_DIVIDER, make sure you turn off unused SDI_LAYERS, otherwise you will waste DDR3 bandwidth even though those layers will not be displayed.
+
+Example, mode 3'h7 & CLK_DIVIDER 4'h4 should give you the special 480p at 60Hz with a maximum of 5 SDI_LAYERS.
+Example, mode 3'h4 & CLK_DIVIDER 4'h0 should give you the special 1080p at 60Hz with a maximum of 1 SDI_LAYERS.
+Example, mode 3'h4 & CLK_DIVIDER 4'h1 should give you the special 1080p at 30Hz with a maximum of 2 SDI_LAYERS.
+Example, mode 3'h1 & CLK_DIVIDER 4'h1 should give you the special 720p at 60Hz with a maximum of 2 SDI_LAYERS.
+
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** List on Parameters
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+*** Note that this HDL code was designed so the any disabled features and hard-wired window controls will prune unused logic an vastly cut required FPGA resources.
+
+HWREG_BASE_ADDRESS       = 32'h00000100,    // The first address where the HW REG controls are located for window layer 0
+HWREG_BASE_ADDR_LSWAP    = 32'h000000F0,    // The first address where the 16 byte control to swap the SDI & PDI layer order.
+ENDIAN                   = "Little",        // Enter "Little" or "Big".  Used for selecting the Endian in tile mode when addressing 16k tiles.
+                                            
+OPTIMIZE_TW_FMAX         = 1,               // Adds a D-Latch buffer for writing to the tile memory when dealing with huge TILE mem sizes.
+OPTIMIZE_PW_FMAX         = 1,               // Adds a D-Latch buffer for writing to the tile memory when dealing with huge palette mem sizes.
+                                            
+PDI_LAYERS               = 1,               // Number of parallel layered 'BrianHG_GFX_Video_Line_Buffer' modules in the system.  1 through 8 is allowed.
+SDI_LAYERS               = 1,               // Use 1,2,4, or 8 sequential display layers in each 'BrianHG_GFX_Video_Line_Buffer' module in the system.
+                                            
+ENABLE_alpha_adj         = 1,               // Use 0 to bypass the CMD_win_alpha_override logic.
+ENABLE_SDI_layer_swap    = 1,               // Use 0 to bypass the serial layer swapping logic
+ENABLE_PDI_layer_swap    = 1,               // Use 0 to bypass the parallel layer swapping logic
+
+                                            
+LBUF_BITS                                   // The bit width of the CMD_line_buf_wdata
+LBUF_WORDS                                  // The total number of 'CMD_line_buf_wdata' words of memory.
+                                            // Anything less than 256 will still use the same minimum M9K/M10K blocks.
+                                            // Only use factors of 2), IE: 256/512/1024...
+                                        
+ENABLE_TILE_MODE                            // Enable font/tile memory mode.  This is for all SDI_LAYERS.
+SKIP_TILE_DELAY                             // When set to 1 and font/tile is disabled, the pipeline delay of the 'tile' engine will be skipped saving logic cells
+                                            // However, if you are using multiple Video_Line_Buffer modules in parallel, some with and others without 'tiles'
+                                            // enabled, the video outputs of each Video_Line_Buffer module will no longer be pixel accurate super-imposed on top of each other.
+                                        
+TILE_BASE_ADDR                              // Tile memory base address.
+TILE_BITS                                   // The bit width of the tile memory.  128bit X 256words  (256 character 8x16 font), 1 bit color. IE: 4kb.
+TILE_WORDS                                  // The total number of tile memory words at 'TILE_BITS' width.
+                                            // Anything less than 256 will still use the same minimum M9K/M10K blocks.
+                                            // Use a minimum of 256), maximum can go as far as the available FPGA memory.
+                                            // Note that screen memory is 32 bits per tile.
+                                            // Real-time software tile controls:
+                                            // Each tile can be 4/8/16/32 pixels wide and tall.
+                                            // Tile depth can be set to 1/2/4/8/16/32 bits per pixel.
+                                            // Each 32bit screen character mem =
+                                            // {8bit offset color), 8bit multiply color), 1bit v-flip), 1bit h-mirror), 14bit tile address}
+                                            //  ---- For 2 thru 8 bit tiles/fonts ---- (multiply), then add rounding to 8 bits)
+                                            //  Special for 1 bit tiles), the first byte is background and the next byte is foreground color.
+                                            //  16/32 bit tile modes are true-color.
+                                        
+                                        
+                                            // Palette is bypassed when operating in true-color modes.
+ENABLE_PALETTE                              // Enable a palette for 8/4/2/1 bit depth.  Heavily recommended when using 'TILE_MODE'.
+SKIP_PALETTE_DELAY                          // When set to 1 and palette is disabled, the resulting delay timing will be the same as the
+                                            // 'SKIP_TILE_DELAY' parameter except for when with multiple ideo_Line_Buffer modules,
+                                            // some have the palette feature enabled and others have it disabled.
+                                            
+PAL_BITS                                    // Palette width.
+PAL_BASE_ADDR                               // Palette base address.
+PAL_WORDS                                   // The total number of palette memory words at 'PAL_BITS' width.
+                                            // Having extra palette width allows for multiple palettes), each dedicated
+                                            // to their own SDI_LAYER.  Otherwise), all the SDI_LAYERS will share
+                                            // the same palette.
+                                            
+PAL_ADR_SHIFT                               // Use 0 for off.  If PAL_BITS is made 32 and PORT_CACHE_BITS is truly 128bits), then use 2.
+                                            // *** Optionally make each 32 bit palette entry skip a x^2 number of bytes
+                                            // so that we can use a minimal single M9K block for a 32bit palette.
+                                            // Use 0 is you just want to write 32 bit data to a direct address from 0 to 255.
+                                            // *** This is a saving measure for those who want to use a single M9K block of ram
+                                            // for the palette), yet still interface with the BrianHG_DDR3 'TAP_xxx' port which
+                                            // may be 128 or 256 bits wide.  The goal is to make the minimal single 256x32 M9K blockram
+                                            // and spread each write address to every 4th or 8th chunk of 128/256 bit 'TAP_xxx' address space.
+
+
+
+
+*** DDR3 controller related parameters:
+
+PORT_ADDR_SIZE                              // Must match PORT_ADDR_SIZE.
+PORT_VECTOR_SIZE                            // Must match PORT_VECTOR_SIZE and be at least large enough for the video line pointer + line buffer module ID.
+PORT_CACHE_BITS                             // Must match PORT_R/W_DATA_WIDTH and be PORT_CACHE_BITS wide for optimum speed.
+
+
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** List on Window Controls.
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+CMD_win_enable         [0:LAYERS-1], // Enables window layer.
+CMD_win_bpp            [0:LAYERS-1], // Bits per pixel.  For 1,2,4,8,16a,32,16b bpp, use 0,1,2,3,4,5,6.  *16a bpp = 4444 RGBA, 16b bpp = 565 RGB.
+CMD_win_base_addr      [0:LAYERS-1], // The beginning memory address for the window.
+CMD_win_bitmap_width   [0:LAYERS-1], // The full width of the bitmap stored in memory.  If tile mode is enabled, then the number of tiles wide.
+CMD_win_bitmap_x_pos   [0:LAYERS-1], // The beginning X pixel position inside the bitmap in memory.
+CMD_win_bitmap_y_pos   [0:LAYERS-1], // The beginning Y line position inside the bitmap in memory.
+
+CMD_win_x_offset       [0:LAYERS-1], // The onscreen X position of the window.
+CMD_win_y_offset       [0:LAYERS-1], // The onscreen Y position of the window.
+CMD_win_x_size         [0:LAYERS-1], // The onscreen display width of the window.      *** Using 0 will disable the window.
+CMD_win_y_size         [0:LAYERS-1], // The onscreen display height of the window.     *** Using 0 will disable the window.
+
+CMD_win_scale_width    [0:LAYERS-1], // Pixel horizontal zoom width.  For 1x,2x,3x thru 16x, use 0,1,2 thru 15. 
+CMD_win_scale_height   [0:LAYERS-1], // Pixel vertical zoom height.   For 1x,2x,3x thru 16x, use 0,1,2 thru 15.
+CMD_win_scale_h_begin  [0:LAYERS-1], // Begin display part-way into a zoomed pixel for sub-pixel accurate scrolling.
+CMD_win_scale_v_begin  [0:LAYERS-1], // Begin display part-way into a zoomed pixel for sub-pixel accurate scrolling.
+
+CMD_win_tile_enable    [0:LAYERS-1], // Enable Tile mode enable.  *** Display will be corrupt if the BrianHG_GFX_Video_Line_Buffer
+                                     //                               module's ENABLE_TILE_MODE parameter isn't turned on.
+
+CMD_win_tile_bpp       [0:LAYERS-1], // Defines the tile bits per pixel.  For 1,2,4,8,16a,32,16b bpp, use 0,1,2,3,4,5,6.  *16a bpp = 4444 RGBA, 16b bpp = 565 RGB. 
+CMD_win_tile_base      [0:LAYERS-1], // Defines the beginning tile 16 bit base address (multiplied by) X 16 bytes for a maximum of 1 megabytes addressable tile set.
+                                     // *** This is the address inside the line buffer tile/font blockram which always begins at 0, NOT the DDR3 TAP_xxx port write address.
+CMD_win_tile_width     [0:LAYERS-1], // Defines the width of the tile.  0,1,2,3 = 4,8,16,32
+CMD_win_tile_height    [0:LAYERS-1], // Defines the height of the tile. 0,1,2,3 = 4,8,16,32
+
+
+CMD_BGC_RGB                        , // Bottom background color when every layer's pixel happens to be transparent. 
+CMD_win_alpha_adj      [0:LAYERS-1], // When 0, the layer translucency will be determined by the graphic data.
+                                     // Any figure from +1 to +127 will progressive force all the graphics opaque.
+                                     // Any figure from -1 to -128 will progressive force all the graphics transparent.
+
+CMD_SDI_layer_swap [0:PDI_LAYERS-1], // Re-position the SDI layer order of each PDI layer line buffer's output stream. (A Horizontal SDI PHASE layer swap / PDI layer)
+CMD_PDI_layer_swap [0:SDI_LAYERS-1], // Re-position the PDI layer order of each SDI layer. (A PDI Vertical swap/SDI Layer PHASE) 
+
+
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** CMD_win_**** connection to HW_REGS in the BrianHG_GFX_VGA_Window_System_DDR3_REGS.sv source file.
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+localparam int win_len = 8'h20 ;                                                      // Length of bytes between each new window layer.
+always_comb begin                                                                     // Also, don't forget everything is offset by the HWREG_BASE_ADDRESS parameter.
+  for (int x=0;x<LAYERS;x++) begin
+    CMD_win_base_addr      [x] = hw_reg32[HWREG_BASE_ADDRESS+(x*win_len)+8'h00]     ; // The beginning DDR3 memory address for the window.  Align to every 32 bytes for best DDR3 performance.
+
+    CMD_win_enable         [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h04][7]  ; // Enable window layer.
+    CMD_win_bpp            [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h04][2:0]; // Bits per pixel.  Use (0,1,2,3,4,5,6) for (1,2,4,8,16a,32,16b) bpp, *16a bpp=4444 RGBA, 16b bpp=565 RGB.
+
+    CMD_win_alpha_adj      [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h05]     ; // 0=translucency will be determined by the graphic data, 127=100% opaque, -128=100% transparent.
+
+    CMD_win_bitmap_width   [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h06]     ; // The full width of the bitmap stored in memory.  If tile mode is enabled, then the number of tiles wide.
+    CMD_win_bitmap_x_pos   [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h08]     ; // The beginning X pixel position inside the bitmap in memory.  IE: Scroll left on a huge bitmap.
+    CMD_win_bitmap_y_pos   [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h0A]     ; // The beginning Y line position inside the bitmap in memory.   IE: Scroll down on a huge bitmap.
+
+    CMD_win_x_offset       [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h0C]     ; // The onscreen X position of the window.
+    CMD_win_y_offset       [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h0E]     ; // The onscreen Y position of the window.
+    CMD_win_x_size         [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h10]     ; // The onscreen display width of the window.      *** Using 0 will disable the window.
+    CMD_win_y_size         [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h12]     ; // The onscreen display height of the window.     *** Using 0 will disable the window.
+
+    CMD_win_scale_width    [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h14][3:0]; // Pixel horizontal zoom width.  Use 0 thru 15 for 1x through 16x size.
+    CMD_win_scale_h_begin  [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h14][7:4]; // Begin display part-way into a zoomed pixel for sub-pixel accurate scrolling.
+    CMD_win_scale_height   [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h15][3:0]; // Pixel vertical zoom height.   Use 0 thru 15 for 1x through 16x size.
+    CMD_win_scale_v_begin  [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h15][7:4]; // Begin display part-way into a zoomed pixel for sub-pixel accurate scrolling.
+
+    CMD_win_tile_base      [x] = hw_reg16[HWREG_BASE_ADDRESS+(x*win_len)+8'h16]     ; // Base address (multiplied by) X 16 bytes of where the windows font begins.  ***NOT counting the TILE_BASE_ADDR when writing into the DDR3.
+    CMD_win_tile_enable    [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h18][7]  ; // Enable Tile mode enable.  *** Display will be corrupt if the BrianHG_GFX_Video_Line_Buffer's ENABLE_TILE_MODE=0
+    CMD_win_tile_bpp       [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h18][2:0]; // Defines the tile bits per pixel.  For 1,2,4,8,16a,32,16b bpp, use 0,1,2,3,4,5,6.  *16a bpp = 4444 RGBA, 16b bpp = 565 RGB. 
+    CMD_win_tile_width     [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h19][5:4]; // Defines the width of the tile.  0,1,2,3 = 4,8,16,32 pixels.
+    CMD_win_tile_height    [x] = hw_reg8 [HWREG_BASE_ADDRESS+(x*win_len)+8'h19][1:0]; // Defines the height of the tile. 0,1,2,3 = 4,8,16,32 pixels.
+  end // for x
+
+
+CMD_BGC_RGB[23:16] = hw_reg8[HWREG_BASE_ADDRESS+16'h001A]     ; // Global system 24 bit color background color for where no active window exists,
+CMD_BGC_RGB[15: 8] = hw_reg8[HWREG_BASE_ADDRESS+16'h001B]     ; // or any pixels where all the layers are transparent all the way through the bottom layer.
+CMD_BGC_RGB[ 7: 0] = hw_reg8[HWREG_BASE_ADDRESS+16'h001C]     ; // 
+
+VIDEO_MODE         = hw_reg8[HWREG_BASE_ADDRESS+16'h001F][6:4]; // 1 special address for changing the global VIDEO_MODE.
+CLK_DIVIDER        = hw_reg8[HWREG_BASE_ADDRESS+16'h001F][2:0]; // 1 special address for changing the pixel CLK_DIVIDER.
+
+// *** Yes, the SDI & PDI swap positions are intentionally reversed as this is a grand crossbar 'X' swapper.
+for (int x=0;x<PDI_LAYERS;x++) CMD_SDI_layer_swap[x] = hw_reg8[HWREG_BASE_ADDR_LSWAP+x+0];
+for (int x=0;x<SDI_LAYERS;x++) CMD_PDI_layer_swap[x] = hw_reg8[HWREG_BASE_ADDR_LSWAP+x+8];
+
+end // _comb
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** Understanding the TILE/FONT enabled PDI layer.
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+The font/tile layer utilized on-chip FPGA blockram to hold it's tiles/fonts.
+
+**********************************************************************************
+Tile selection when using different 'CMD_vid_bpp' modes, 8/16a/32/16b bpp modes.
+* On a tile layer, bpp will actually mean bpc -> Bits Per Character Tile.
+----------------------------------------------------------------------------------
+FGC  = Foreground color.  Adds this FGC value to any tile pixels whose color data is != 0.
+BGC  = Background color.  Replace tile pixels whose color data = 0 with this BGC value.
+MIR  = Mirror the tile.
+FLIP = Vertically flip the tile.
+----------------------------------------------------------------------------------
+
+CMD_vid_bpp' mode:
+
+8   bpp -> Each byte = 1 character, 0 through 255, no color, mirror or flip functions.
+
+            BGC,  FGC,  Char 0-255.   *** BGC & FGC are multiplied by 16 in this mode.
+16a bpp -> {4'hx, 4'hx, 8'hxx}                           = 16 bits / 256 possible tiles.
+
+            FLIP, MIR,  FGC,  Char 0-1023. *** FGC is multiplied by 16 in this mode.
+16b bpp -> {1'bx, 1'bx, 4'hx, 10'hxxx}                   = 16 bits / 1024 possible tiles.
+
+             BGC,   FGC,  FLIP, MIR,  N/A,  Char 0-1023.
+32  bpp -> {8'hxx, 8'hxx, 1'bx, 1'bx, 4'h0, 10'hxxx}     = 32 bits / 1024 possible tiles.
+
+
+Remember, the contents inside a tile set's 'CMD_vid_tile_bpp' can be 1/2/4/8/16a/32/16b bpp.
+The tile set can only be as large as the reserved fixed available FPGA blockram.
+It is possible to have multiple tile layers when using the 'SDI_LAYERS' feature
+where each layer may share or have different tile sets so long as there is enough
+room in the single reserved FPGA blockram.  It is still possible to enable additional
+tile/font blockrams for each PDI_LAYER at the vast expense of FPGA memory or smaller
+sized tile/font sets for each enabled PDI_LAYER.
+
+**********************************************************************************
+
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+*** Understanding Layer Order, priority, and swapping control logic.
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+******************************************************************************************************
+
+*** For the layer-swapping controls, See 'BrianHG_GFX_VGA_Window_System.pdf' for a block diagram illustration.
