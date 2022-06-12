@@ -1,4 +1,91 @@
 # BrianHG-DDR3-Controller
+-----------------------------------------------------
+BrianHG_DDR3_Controller V1.6 Release, June 11, 2022.
+Includes new BrianHG_GFX_VGA_Window_System.
+-----------------------------------------------------
+
+Folder BrianHG_DDR3 now contains the new v1.6 controller.
+Main source files:
+
+ - BrianHG_DDR3_v15_and_v16_Block_Diagram.png -> Illustration of module connections.
+
+ - Includes these following sub-modules :
+   - BrianHG_DDR3_CONTROLLER_v16_top.sv     -> v1.6 TOP entry to the complete project which wires the DDR3_COMMANDER_v16 to the DDR3_PHY_SEQ giving you access to all the read/write ports + access to the DDR3 IO pins.
+   - BrianHG_DDR3_COMMANDER_v16.sv          -> v1.6 High FMAX speed multi-port read and write requests and cache, commands the BrianHG_DDR3_PHY_SEQ.sv sequencer.
+   - BrianHG_DDR3_CMD_SEQUENCER_v16.sv      -> v1.6 Takes in the read and write requests, generates a stream of DDR3 commands to execute the read and writes.
+   - BrianHG_DDR3_PHY_SEQ_v16.sv            -> v1.6 DDR3 PHY sequencer.          (If you want just a compact DDR3 controller, skip the DDR3_CONTROLLER_top & DDR3_COMMANDER and just use this module alone.)
+   - BrianHG_DDR3_PLL.sv                    -> Generates the system clocks. (*** Currently Altera/Intel only ***)
+   - BrianHG_DDR3_GEN_tCK.sv                -> Generates all the tCK count clock cycles for the DDR3_PHY_SEQ so that the DDR3 clock cycle requirements are met.
+   - BrianHG_DDR3_FIFOs.sv                  -> Serial shifting logic FIFOs.
+
+ - Includes the following test-benches :
+   - BrianHG_DDR3_CONTROLLER_v16_top_tb.sv  -> Test the entire 'BrianHG_DDR3_CONTROLLER_v16_top.sv' system with Mircon's DDR3 Verilog model.
+   - BrianHG_DDR3_COMMANDER_v16_tb.sv       -> Test just the commander_v16.  The 'DDR3_PHY_SEQ' is dummy simulated.  (*** This one will simulate on any vendor's ModelSim ***)
+   - BrianHG_DDR3_CMD_SEQUENCER_v16_tb.sv   -> Test just the DDR3 command sequencer.                                 (*** This one will simulate on any vendor's ModelSim ***)
+   - BrianHG_DDR3_PHY_SEQ_v16_tb.sv         -> Test just the DDR3 PHY sequencer with Mircon's DDR3 Verilog model providing logged DDR3 command results with any access violations listed.
+   - BrianHG_DDR3_PLL_tb.sv                 -> Test just the PLL module.
+
+ - IO port vendor specific modules :
+   - BrianHG_DDR3_IO_PORT_ALTERA.sv         -> Physical DDR IO pin driver specifically for Altera/Intel Cyclone III/IV/V and MAX10.
+
+ - Modelsim 'do' script files.
+   - All setup_xxx.do files setup their associated Modelsim simulation.
+   - All run_xxx.do   files quick re-compile and run their associated Modelsim simulation.
+
+
+Folder 'BrianHG_DDR3_GFX_source_v16' contains my new BrianHG_GFX_VGA_Window_System multi-window system.
+Main source files:
+
+ - BrianHG_GFX_VGA_Window_System.pdf          -> Visual block diagram for the graphics system and layer-swapping illustration.
+ - BrianHG_GFX_VGA_Window_System.txt          -> Full documentation for the VGA window system.
+
+ - Includes these top hierarchy files:
+   - BrianHG_GFX_VGA_Window_System.sv           -> Full window system where you drive the CMD_win_xxx controls via input ports.
+   - BrianHG_GFX_VGA_Window_System_DDR3_REGS.sv -> Full window system where you drive the CMD_win_xxx controls via writing to DDR3 memory addresses through any multiport.
+
+ - Modelsim 'do' script files.
+   - All setup_xxx.do files setup their associated Modelsim simulation.
+   - All run_xxx.do   files quick re-compile and run their associated Modelsim simulation.
+
+
+New Arrow DECA board demo complete projects running the v1.6 BrianHG_DDR3_Controller conected to
+the BrianHG_GFX_VGA_Window_System, all at 400MHz, all 100% timing requirements met.
+Source folders:
+
+ - BrianHG_DDR3_DECA_GFX_DEMO_v16_1_LAYER     -> Replaces the original ellipse demo, but now uses my new BrianHG_GFX_VGA_Window_System.
+ - BrianHG_DDR3_DECA_GFX_DEMO_v16_2_LAYERS    -> Improved ellipse demo using 2 translucent windows scrolling at different speeds.
+ - BrianHG_DDR3_DECA_GFX_HWREGS_v16_16_LAYERS -> Example 16 window layer system where writes to the DDR3 controls the window's regs.
+ - BrianHG_DDR3_DECA_RS232_DEBUG_TEST_v16     -> Single port DDR3 controller example connected to my RS232 debugger.
+ - BrianHG_DDR3_DECA_PHY_SEQ_only_v16         -> (No multiport controller.) Bare minimum DDR3 PHY_SEQ controller connected to my RS232 debugger.
+
+Test hypothetical builds for Cyclone III,IV,V to see if we can meet FMAX.
+ - BrianHG_DDR3_CIII_GFX_TEST_v16_1_LAYER_Q13.0sp1  -> Cyclone III example using Quartus 13.0 sp1.
+ - BrianHG_DDR3_CIV_GFX_TEST_v16_1_LAYER            -> Cyclone IV example using Quartus 20.1.
+ - BrianHG_DDR3_CV_GFX_TEST_v16_1_LAYER_350MHz      -> Cyclone V example running only at 350MHz using Quartus 20.1.
+
+
+- Get new 2 window layer ellipse demo here:
+https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg4230856/#msg4230856
+or here: https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_DECA_GFX_DEMOS_v16.zip
+
+- Get new VGA video system demo configured for up to 16 window layers driven by my RS232_Debugger here:
+https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg4233016/#msg4233016
+or here: https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_DECA_GFX_HWREGS_v16_16_LAYERS_test.zip
+source here: https://github.com/BrianHGinc/BrianHG-DDR3-Controller/tree/main/BrianHG_DDR3_DECA_GFX_HWREGS_v16_16_LAYERS
+
+- User 'davemuscle' created an Avalon interface wrapper comparing my DDR3 PHY_SEQ_only free controller to Altera's expensive UniPHY IP, see here:
+https://www.eevblog.com/forum/fpga/brianhg_ddr3_controller-open-source-ddr3-controller/msg4108963/#msg4108963
+(Note that both controllers should have achieve double the bandwidth and my 'BrianHG_DDR3_DECA_GFX_DEMO_v16_2_LAYERS' demo already runs at double the efficiency.)
+
+- User 'Nockieboy' has been working on integrating my controller with his Z80 8-bit GPU project, see his first multi-layer-window test here:
+https://www.eevblog.com/forum/fpga/fpga-vga-controller-for-8-bit-computer/msg3980567/#msg3980567
+and color font/tile mode test:
+https://www.eevblog.com/forum/fpga/fpga-vga-controller-for-8-bit-computer/msg4029019/#msg4029019
+
+- You can find all my older versions of my DDR3 Controller system and demos in a new branch called 'pre_v16'.
+
+Enjoy the absurd number of lines of code to make all of this possible in a user configurable way!
+
 --------------------------------------
 BrianHG_DDR3_Controller V1.6 Preview
 January 28, 2022
