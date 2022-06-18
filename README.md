@@ -123,7 +123,7 @@ December 3, 2021
 A maddening over 11K lines of code....
 --------------------------------------
 
-See image: https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_v15_Block_Diagram.png for a simplified block diagram of the BrianHG_DDR3_Controller_v15 controller system.
+See image: [https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_v15_Block_Diagram.png](https://github.com/BrianHGinc/BrianHG-DDR3-Controller/blob/main/BrianHG_DDR3_v15_and_v16_Block_Diagram.png) for a simplified block diagram of the BrianHG_DDR3_Controller_v15 controller system.
 
 Note that the original v1.0 source files still exist, still function, and are backwards compatible, but understand that all the source files have been updated.  This includes the new .sdc files in the new demo projects.
 
