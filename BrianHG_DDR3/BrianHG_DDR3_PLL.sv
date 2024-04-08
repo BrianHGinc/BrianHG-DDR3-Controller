@@ -529,10 +529,12 @@ if (C100 == 0 )  initial begin
 $warning("****************************************");
 $warning("*** BrianHG_DDR3_PLL PARAMETER ERROR ***");
 $warning("************************************************************************************");
-$warning("*** BrianHG_DDR3_PLL Cyclone V output frequency %d MHz is not supported.       ***",12'(PLL1_OUT_TRUE_KHZ/1000));
-$warning("*** Please change the .CLK_IN_MULT and .CLK_IN_DIV parameters so that the output ***");
-$warning("*** frequency is 250, 275, 300, 325, 350, 375, 400, 425, 450, 475 or 500 MHz.    ***");
-$warning("************************************************************************************");
+$warning("*** BrianHG_DDR3_PLL Cyclone V/Arria V output frequency %d MHz is not supported. ***",12'(PLL1_OUT_TRUE_KHZ/1000));
+$warning("*** Please change the .CLK_IN_MULT and .CLK_IN_DIV parameters so that the output        ***");
+$warning("*** frequency is 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525,            ***");
+$warning("***              550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825,            ***");
+$warning("***              850, 875, 900, 925, 950, 975, or 1000 MHz.                             ***");
+$warning("*******************************************************************************************");
 $error;
 $stop;
 end
@@ -550,9 +552,9 @@ if (W_CPMP == 8 )  initial begin
 $warning("****************************************");
 $warning("*** BrianHG_DDR3_PLL PARAMETER ERROR ***");
 $warning("**************************************************************************");
-$warning("*** BrianHG_DDR3_PLL Cyclone V .DDR3_WDQ_PHASE(%d) is not supported. ***",10'(DDR3_WDQ_PHASE));
-$warning("*** Only 0, 45, 90, 135, 180, 225, 270, 315 deg. are allowed.          ***");
-$warning("**************************************************************************");
+$warning("*** BrianHG_DDR3_PLL Cyclone V/Arria V .DDR3_WDQ_PHASE(%d) is not supported. ***",10'(DDR3_WDQ_PHASE));
+$warning("*** Only 0, 45, 90, 135, 180, 225, 270, 315 deg. are allowed.                 ***");
+$warning("*********************************************************************************");
 $error;
 $stop;
 end
@@ -561,9 +563,9 @@ if (DDR3_RDQ_PHASE != 0 )  initial begin
 $warning("****************************************");
 $warning("*** BrianHG_DDR3_PLL PARAMETER ERROR ***");
 $warning("**************************************************************************");
-$warning("*** BrianHG_DDR3_PLL Cyclone V .DDR3_RDQ_PHASE(%d) is not supported. ***",10'(DDR3_RDQ_PHASE));
-$warning("*** Only 0 deg. is allowed.                                            ***");
-$warning("**************************************************************************");
+$warning("*** BrianHG_DDR3_PLL Cyclone V/Arria V .DDR3_RDQ_PHASE(%d) is not supported. ***",10'(DDR3_RDQ_PHASE));
+$warning("*** Only 0 deg. is allowed.                                                   ***");
+$warning("*********************************************************************************");
 $error;
 $stop;
 end
