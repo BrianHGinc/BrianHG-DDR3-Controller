@@ -3,7 +3,10 @@
 BrianHG_DDR3_Controller V1.65 Release, April 8, 2024.
 -----------------------------------------------------
 New: Added PLL support for Arria V GX, GT, SX, ST, GZ.
+
 Also added a $stop & $error message if the FPGA_FAMILY is Unknown.
+
+Also added Arria V and Cyclone V PLL frequencies to 1Ghz / 2gtps.
 
 -----------------------------------------------------
 BrianHG_DDR3_Controller V1.6 Release, June 11, 2022.
