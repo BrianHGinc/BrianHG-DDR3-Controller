@@ -4,6 +4,10 @@
 // control for write leveling, RQD 90 degree clock, and
 // CMD_CLK system clock which can be configured to: 
 //
+// Version 1.3, April 5, 2024
+//   *** New, added Arria V GX, GT, SX, ST, GZ pll support to line 288 & selecting which PLL at line 335.
+//       Also added a $stop & $error message if the FPGA_FAMILY is Unknown at line 310.
+//
 //
 // Version 1.2, August 26, 2021
 //
@@ -282,12 +286,17 @@ localparam  DDR3_RDQ_PHASE_pss = Altera_Dummy_String[DDR3_RDQ_PHASE_ps] ;
 // Another workaround of mine which looks utterly stupid, but the only possible way to get it to function.
 
 localparam FPGA_FAMILY_string = (FPGA_FAMILY=="Arria II GX")   ? "Arria II GX"   :
+                                (FPGA_FAMILY=="Arria V GZ")    ? "Arria V GZ"    :
+                                (FPGA_FAMILY=="Arria V GX")    ? "Arria V GX"    :
+                                (FPGA_FAMILY=="Arria V GT")    ? "Arria V GT"    :
+                                (FPGA_FAMILY=="Arria V SX")    ? "Arria V SX"    :
+                                (FPGA_FAMILY=="Arria V ST")    ? "Arria V ST"    :
                                 (FPGA_FAMILY=="Cyclone III")   ? "Cyclone III"   :
                                 (FPGA_FAMILY=="Cyclone IV E")  ? "Cyclone IV E"  :
                                 (FPGA_FAMILY=="Cyclone V")     ? "Cyclone V"     :
                                 (FPGA_FAMILY=="MAX 10")        ? "MAX 10"        :
                                 (FPGA_FAMILY=="Cyclone 10 LP") ? "Cyclone 10 LP" :
-                                                                 "MAX 10"          ;
+                                                                 "Unknown"       ;
 
 wire [4:0]  PLL1_clk_out;    // PLL has 5 outputs.
 
@@ -297,11 +306,33 @@ generate
 // ******************************************************************************************************************************************
 if (FPGA_VENDOR[0] == "A" || FPGA_VENDOR[0] == "a" || FPGA_VENDOR[0] == "I" || FPGA_VENDOR[0] == "i") begin 
 
+
+if (FPGA_FAMILY_string=="Unknown") initial begin
+$display("****************************************");
+$display("*** BrianHG_DDR3_PLL PARAMETER ERROR ***");
+$display("**************************************************************************");
+$display("*** BrianHG_DDR3_PLL parameter .FPGA_FAMILY(%s) is not supported.    ***",(FPGA_FAMILY));
+$display("*** Only these FPGA are currently recognized:                        ***");
+$display("***                                                                  ***");
+$display("***   Arria II GX                                                    ***");
+$display("***   Arria V GZ                                                     ***");
+$display("***   Arria V GX                                                     ***");
+$display("***   Arria V GT                                                     ***");
+$display("***   Arria V SX                                                     ***");
+$display("***   Arria V ST                                                     ***");
+$display("***   Cyclone III                                                    ***");
+$display("***   Cyclone IV E                                                   ***");
+$display("***   Cyclone V                                                      ***");
+$display("***   MAX 10                                                         ***");
+$display("***   Cyclone 10 LP                                                  ***");
+$warning("**************************************************************************");
+$error;
+$stop;
+
 // ****************************************************************************************
 // *** Begin Initiate DDR3 clock Altera PLL for Cyclone III/IV/10LP/MAX 10/Arria II  ******
 // ****************************************************************************************
-
-if (FPGA_FAMILY!="Cyclone V") begin
+end else if (FPGA_FAMILY!="Cyclone V" && FPGA_FAMILY!="Arria V GZ" && FPGA_FAMILY!="Arria V GX" && FPGA_FAMILY!="Arria V GT" && FPGA_FAMILY!="Arria V SX" && FPGA_FAMILY!="Arria V ST") begin
  altpll #(
 
   .bandwidth_type ("AUTO"),           .inclk0_input_frequency (PLL1_inps),  .compensate_clock ("CLK0"),         .lpm_hint ("CBX_MODULE_PREFIX=BrianHG_DDR3_PLL"),
@@ -588,19 +619,21 @@ assign     CMD_CLK     = PLL1_clk_out[CMD_CLK_SEL] ;
 
 generate
 initial begin
-$warning("*****************************");
-$warning("*** BrianHG_DDR3_PLL Info ***");
-$warning("*********************************************");
-$warning("***      CLK_IN           = %d MHz.     ***",12'(CLK_KHZ_IN/1000));
-$warning("***      DDR3_RDQ/WDQ     = %d MTPS.    ***",12'(PLL1_OUT_TRUE_KHZ/500));
-$warning("***      DDR3_CLK/RDQ/WDQ = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/1000));
-$warning("***      DDR3_WDQ_PHASE   = %d degrees. ***",10'(DDR3_WDQ_PHASE));
-$warning("*** True DDR3_WDQ_PHASE   =  %s ps.     ***",DDR3_WDQ_PHASE_pss);
-$warning("***      DDR3_RDQ_PHASE   = %d degrees. ***",10'(DDR3_RDQ_PHASE));
-$warning("*** True DDR3_RDQ_PHASE   =  %s ps.     ***",DDR3_RDQ_PHASE_pss);
-$warning("***      CMD_CLK          = %d MHz.     ***",12'(PLL1_OUT_CMD_CLK_KHZ/1000));
-$warning("***      DDR3_CLK_50      = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/2000));
-$warning("***      DDR3_CLK_25      = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/4000));
+$display("*****************************");
+$display("*** BrianHG_DDR3_PLL Info ***");
+$display("*********************************************");
+$display("***      FPGA_VENDOR      = %s.     ***",FPGA_VENDOR);
+$display("***      FPGA_FAMILY      = %s.     ***",FPGA_FAMILY);
+$display("***      CLK_IN           = %d MHz.     ***",12'(CLK_KHZ_IN/1000));
+$display("***      DDR3_RDQ/WDQ     = %d MTPS.    ***",12'(PLL1_OUT_TRUE_KHZ/500));
+$display("***      DDR3_CLK/RDQ/WDQ = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/1000));
+$display("***      DDR3_WDQ_PHASE   = %d degrees. ***",10'(DDR3_WDQ_PHASE));
+$display("*** True DDR3_WDQ_PHASE   =  %s ps.     ***",DDR3_WDQ_PHASE_pss);
+$display("***      DDR3_RDQ_PHASE   = %d degrees. ***",10'(DDR3_RDQ_PHASE));
+$display("*** True DDR3_RDQ_PHASE   =  %s ps.     ***",DDR3_RDQ_PHASE_pss);
+$display("***      CMD_CLK          = %d MHz.     ***",12'(PLL1_OUT_CMD_CLK_KHZ/1000));
+$display("***      DDR3_CLK_50      = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/2000));
+$display("***      DDR3_CLK_25      = %d MHz.     ***",12'(PLL1_OUT_TRUE_KHZ/4000));
 $warning("*********************************************");
 end
 endgenerate
