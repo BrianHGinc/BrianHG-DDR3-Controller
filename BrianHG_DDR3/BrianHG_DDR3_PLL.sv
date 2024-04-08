@@ -4,6 +4,10 @@
 // control for write leveling, RQD 90 degree clock, and
 // CMD_CLK system clock which can be configured to: 
 //
+//
+// Version 1.4, April 8, 2024
+//   *** New, added Arria V and Cyclone V PLL frequencies to 1Ghz / 2gtps.
+//
 // Version 1.3, April 5, 2024
 //   *** New, added Arria V GX, GT, SX, ST, GZ pll support to line 288 & selecting which PLL at line 335.
 //       Also added a $stop & $error message if the FPGA_FAMILY is Unknown at line 310.
@@ -390,7 +394,23 @@ $error;
 $stop;
 end
 
-localparam  C100 = (PLL1_OUT_TRUE_KHZ==600000) ? "600.000000 MHz" :
+localparam  C100 = (PLL1_OUT_TRUE_KHZ==1000000)? "1000.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==975000) ? "975.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==950000) ? "950.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==925000) ? "925.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==900000) ? "900.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==875000) ? "875.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==850000) ? "850.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==825000) ? "825.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==800000) ? "800.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==775000) ? "775.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==750000) ? "750.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==725000) ? "725.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==700000) ? "700.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==675000) ? "675.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==650000) ? "650.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==625000) ? "625.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==600000) ? "600.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==575000) ? "575.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==550000) ? "550.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==525000) ? "525.000000 MHz" :
@@ -406,7 +426,23 @@ localparam  C100 = (PLL1_OUT_TRUE_KHZ==600000) ? "600.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==275000) ? "275.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==250000) ? "250.000000 MHz" : 0 ;
 
-localparam  C101 = (PLL1_OUT_TRUE_KHZ==600000) ? "600.000001 MHz" :
+localparam  C101 = (PLL1_OUT_TRUE_KHZ==1000000)? "1000.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==975000) ? "975.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==950000) ? "950.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==925000) ? "925.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==900000) ? "900.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==875000) ? "875.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==850000) ? "850.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==825000) ? "825.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==800000) ? "800.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==775000) ? "775.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==750000) ? "750.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==725000) ? "725.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==700000) ? "700.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==675000) ? "675.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==650000) ? "650.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==625000) ? "625.000001 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==600000) ? "600.000001 MHz" :
                    (PLL1_OUT_TRUE_KHZ==575000) ? "575.000001 MHz" :
                    (PLL1_OUT_TRUE_KHZ==550000) ? "550.000001 MHz" :
                    (PLL1_OUT_TRUE_KHZ==525000) ? "525.000001 MHz" :
@@ -422,7 +458,23 @@ localparam  C101 = (PLL1_OUT_TRUE_KHZ==600000) ? "600.000001 MHz" :
                    (PLL1_OUT_TRUE_KHZ==275000) ? "275.000001 MHz" :
                    (PLL1_OUT_TRUE_KHZ==250000) ? "250.000001 MHz" : 0 ;
 
-localparam  C050 = (PLL1_OUT_TRUE_KHZ==600000) ? "300.000000 MHz" :
+localparam  C050 = (PLL1_OUT_TRUE_KHZ==1000000)? "500.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==975000) ? "487.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==950000) ? "475.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==925000) ? "462.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==900000) ? "450.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==875000) ? "437.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==850000) ? "425.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==825000) ? "412.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==800000) ? "400.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==775000) ? "387.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==750000) ? "375.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==725000) ? "362.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==700000) ? "350.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==675000) ? "337.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==650000) ? "325.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==625000) ? "312.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==600000) ? "300.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==575000) ? "287.500000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==550000) ? "275.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==525000) ? "262.500000 MHz" :
@@ -438,7 +490,23 @@ localparam  C050 = (PLL1_OUT_TRUE_KHZ==600000) ? "300.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==275000) ? "137.500000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==250000) ? "125.000000 MHz" : 0 ;
 
-localparam  C025 = (PLL1_OUT_TRUE_KHZ==600000) ? "150.000000 MHz" :
+localparam  C025 = (PLL1_OUT_TRUE_KHZ==1000000)? "250.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==975000) ? "243.750000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==950000) ? "237.500000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==925000) ? "231.250000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==900000) ? "225.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==875000) ? "218.750000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==850000) ? "212.500000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==825000) ? "206.250000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==800000) ? "200.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==775000) ? "193.750000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==750000) ? "187.500000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==725000) ? "181.250000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==700000) ? "175.000000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==675000) ? "168.750000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==650000) ? "162.500000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==625000) ? "156.250000 MHz" :
+                   (PLL1_OUT_TRUE_KHZ==600000) ? "150.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==575000) ? "143.750000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==550000) ? "137.500000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==525000) ? "131.250000 MHz" :
@@ -447,12 +515,12 @@ localparam  C025 = (PLL1_OUT_TRUE_KHZ==600000) ? "150.000000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==450000) ? "112.500000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==425000) ? "106.250000 MHz" :
                    (PLL1_OUT_TRUE_KHZ==400000) ? "100.000000 MHz" :
-                   (PLL1_OUT_TRUE_KHZ==375000) ? "93.750000 MHz"  :
-                   (PLL1_OUT_TRUE_KHZ==350000) ? "87.500000 MHz"  :
-                   (PLL1_OUT_TRUE_KHZ==325000) ? "81.250000 MHz"  :
-                   (PLL1_OUT_TRUE_KHZ==300000) ? "75.000000 MHz"  :
-                   (PLL1_OUT_TRUE_KHZ==275000) ? "68.750000 MHz"  :
-                   (PLL1_OUT_TRUE_KHZ==250000) ? "62.500000 MHz"  : 0 ;
+                   (PLL1_OUT_TRUE_KHZ==375000) ?  "93.750000 MHz"  :
+                   (PLL1_OUT_TRUE_KHZ==350000) ?  "87.500000 MHz"  :
+                   (PLL1_OUT_TRUE_KHZ==325000) ?  "81.250000 MHz"  :
+                   (PLL1_OUT_TRUE_KHZ==300000) ?  "75.000000 MHz"  :
+                   (PLL1_OUT_TRUE_KHZ==275000) ?  "68.750000 MHz"  :
+                   (PLL1_OUT_TRUE_KHZ==250000) ?  "62.500000 MHz"  : 0 ;
 
 // ****************************************************
 // ***  Unknown Cyclone V output frequency ************
